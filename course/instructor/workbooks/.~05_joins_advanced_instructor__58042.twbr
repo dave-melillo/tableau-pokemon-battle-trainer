@@ -1,0 +1,1932 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20242.24.0711.1636                               -->
+<workbook original-version='18.1' source-build='2024.2.1 (20242.24.0711.1636)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelExtractV2.true...ObjectModelExtractV2 />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <_.fcp.AnimationOnByDefault.false...style>
+    <_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule element='animation'>
+      <_.fcp.AnimationOnByDefault.false...format attr='animation-on' value='ao-on' />
+    </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
+  </_.fcp.AnimationOnByDefault.false...style>
+  <datasources>
+    <datasource caption='battle_participant + pokemon + trainer' inline='true' name='federated.db14afd1cef0f6995b5a89a62806' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='battle_participant' name='textscan.320c0d871079ea94a5f5df38f3ef'>
+            <connection class='textscan' directory='/Users/davemelillo/Desktop/salesforce_tableau/pokemon/course/shared/raw_data' filename='battle_participant.csv' workgroup-auth-mode='as-is' />
+          </named-connection>
+          <named-connection caption='pokemon' name='textscan.a5ac814f30a74a5f47e3b1ed5280'>
+            <connection class='textscan' directory='/Users/davemelillo/Desktop/salesforce_tableau/pokemon/course/shared/raw_data' filename='pokemon.csv' workgroup-auth-mode='as-is' />
+          </named-connection>
+          <named-connection caption='trainer' name='textscan.4ce5ccb3be4ac7e965e9b040db0a'>
+            <connection class='textscan' directory='/Users/davemelillo/Desktop/salesforce_tableau/pokemon/course/shared/raw_data' filename='trainer.csv' workgroup-auth-mode='as-is' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation join='left' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[battle_participant].[trainer_id]' />
+              <expression op='[trainer].[trainer_id]' />
+            </expression>
+          </clause>
+          <relation join='left' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[battle_participant].[pokemonid]' />
+                <expression op='[pokemon].[pokedex_number]' />
+              </expression>
+            </clause>
+            <relation connection='textscan.320c0d871079ea94a5f5df38f3ef' name='battle_participant' table='[battle_participant#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                <column datatype='string' name='battle_participant_id' ordinal='0' />
+                <column datatype='string' name='battle_id' ordinal='1' />
+                <column datatype='string' name='trainer_id' ordinal='2' />
+                <column datatype='string' name='team_side' ordinal='3' />
+                <column datatype='integer' name='pokemonid' ordinal='4' />
+                <column datatype='integer' name='slot_number' ordinal='5' />
+                <column datatype='integer' name='is_winner' ordinal='6' />
+                <column datatype='integer' name='fainted_flag' ordinal='7' />
+                <column datatype='integer' name='venue_type_match_flag' ordinal='8' />
+                <column datatype='integer' name='trainer_type_match_flag' ordinal='9' />
+                <column datatype='real' name='venue_resistance_multiplier' ordinal='10' />
+                <column datatype='real' name='base_power' ordinal='11' />
+                <column datatype='real' name='adjusted_power' ordinal='12' />
+                <column datatype='integer' name='is_mvp_flag' ordinal='13' />
+              </columns>
+            </relation>
+            <relation connection='textscan.a5ac814f30a74a5f47e3b1ed5280' name='pokemon' table='[pokemon#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                <column datatype='string' name='abilities' ordinal='0' />
+                <column datatype='real' name='against_bug' ordinal='1' />
+                <column datatype='real' name='against_dark' ordinal='2' />
+                <column datatype='real' name='against_dragon' ordinal='3' />
+                <column datatype='real' name='against_electric' ordinal='4' />
+                <column datatype='real' name='against_fairy' ordinal='5' />
+                <column datatype='real' name='against_fight' ordinal='6' />
+                <column datatype='real' name='against_fire' ordinal='7' />
+                <column datatype='real' name='against_flying' ordinal='8' />
+                <column datatype='real' name='against_ghost' ordinal='9' />
+                <column datatype='real' name='against_grass' ordinal='10' />
+                <column datatype='real' name='against_ground' ordinal='11' />
+                <column datatype='real' name='against_ice' ordinal='12' />
+                <column datatype='real' name='against_normal' ordinal='13' />
+                <column datatype='real' name='against_poison' ordinal='14' />
+                <column datatype='real' name='against_psychic' ordinal='15' />
+                <column datatype='real' name='against_rock' ordinal='16' />
+                <column datatype='real' name='against_steel' ordinal='17' />
+                <column datatype='real' name='against_water' ordinal='18' />
+                <column datatype='integer' name='attack' ordinal='19' />
+                <column datatype='integer' name='base_egg_steps' ordinal='20' />
+                <column datatype='integer' name='base_happiness' ordinal='21' />
+                <column datatype='integer' name='base_total' ordinal='22' />
+                <column datatype='integer' name='capture_rate' ordinal='23' />
+                <column datatype='string' name='classfication' ordinal='24' />
+                <column datatype='integer' name='defense' ordinal='25' />
+                <column datatype='integer' name='experience_growth' ordinal='26' />
+                <column datatype='real' name='height_m' ordinal='27' />
+                <column datatype='integer' name='hp' ordinal='28' />
+                <column datatype='string' name='japanese_name' ordinal='29' />
+                <column datatype='string' name='name' ordinal='30' />
+                <column datatype='real' name='percentage_male' ordinal='31' />
+                <column datatype='integer' name='pokedex_number' ordinal='32' />
+                <column datatype='integer' name='sp_attack' ordinal='33' />
+                <column datatype='integer' name='sp_defense' ordinal='34' />
+                <column datatype='integer' name='speed' ordinal='35' />
+                <column datatype='string' name='type1' ordinal='36' />
+                <column datatype='string' name='type2' ordinal='37' />
+                <column datatype='real' name='weight_kg' ordinal='38' />
+                <column datatype='integer' name='generation' ordinal='39' />
+                <column datatype='integer' name='is_legendary' ordinal='40' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='textscan.4ce5ccb3be4ac7e965e9b040db0a' name='trainer' table='[trainer#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='string' name='trainer_id' ordinal='0' />
+              <column datatype='string' name='trainer_name' ordinal='1' />
+              <column datatype='string' name='trainer_class' ordinal='2' />
+              <column datatype='string' name='home_region' ordinal='3' />
+              <column datatype='string' name='hometown' ordinal='4' />
+              <column datatype='string' name='preferred_type' ordinal='5' />
+              <column datatype='string' name='secondary_type' ordinal='6' />
+              <column datatype='string' name='experience_tier' ordinal='7' />
+              <column datatype='integer' name='strategy_rating' ordinal='8' />
+              <column datatype='integer' name='adaptability_rating' ordinal='9' />
+              <column datatype='integer' name='aggression_rating' ordinal='10' />
+              <column datatype='integer' name='years_experience' ordinal='11' />
+              <column datatype='integer' name='is_gym_leader' ordinal='12' />
+              <column datatype='integer' name='signature_pokemonid' ordinal='13' />
+            </columns>
+          </relation>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation join='left' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[battle_participant].[trainer_id]' />
+              <expression op='[trainer].[trainer_id]' />
+            </expression>
+          </clause>
+          <relation join='left' type='join'>
+            <clause type='join'>
+              <expression op='='>
+                <expression op='[battle_participant].[pokemonid]' />
+                <expression op='[pokemon].[pokedex_number]' />
+              </expression>
+            </clause>
+            <relation connection='textscan.320c0d871079ea94a5f5df38f3ef' name='battle_participant' table='[battle_participant#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                <column datatype='string' name='battle_participant_id' ordinal='0' />
+                <column datatype='string' name='battle_id' ordinal='1' />
+                <column datatype='string' name='trainer_id' ordinal='2' />
+                <column datatype='string' name='team_side' ordinal='3' />
+                <column datatype='integer' name='pokemonid' ordinal='4' />
+                <column datatype='integer' name='slot_number' ordinal='5' />
+                <column datatype='integer' name='is_winner' ordinal='6' />
+                <column datatype='integer' name='fainted_flag' ordinal='7' />
+                <column datatype='integer' name='venue_type_match_flag' ordinal='8' />
+                <column datatype='integer' name='trainer_type_match_flag' ordinal='9' />
+                <column datatype='real' name='venue_resistance_multiplier' ordinal='10' />
+                <column datatype='real' name='base_power' ordinal='11' />
+                <column datatype='real' name='adjusted_power' ordinal='12' />
+                <column datatype='integer' name='is_mvp_flag' ordinal='13' />
+              </columns>
+            </relation>
+            <relation connection='textscan.a5ac814f30a74a5f47e3b1ed5280' name='pokemon' table='[pokemon#csv]' type='table'>
+              <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                <column datatype='string' name='abilities' ordinal='0' />
+                <column datatype='real' name='against_bug' ordinal='1' />
+                <column datatype='real' name='against_dark' ordinal='2' />
+                <column datatype='real' name='against_dragon' ordinal='3' />
+                <column datatype='real' name='against_electric' ordinal='4' />
+                <column datatype='real' name='against_fairy' ordinal='5' />
+                <column datatype='real' name='against_fight' ordinal='6' />
+                <column datatype='real' name='against_fire' ordinal='7' />
+                <column datatype='real' name='against_flying' ordinal='8' />
+                <column datatype='real' name='against_ghost' ordinal='9' />
+                <column datatype='real' name='against_grass' ordinal='10' />
+                <column datatype='real' name='against_ground' ordinal='11' />
+                <column datatype='real' name='against_ice' ordinal='12' />
+                <column datatype='real' name='against_normal' ordinal='13' />
+                <column datatype='real' name='against_poison' ordinal='14' />
+                <column datatype='real' name='against_psychic' ordinal='15' />
+                <column datatype='real' name='against_rock' ordinal='16' />
+                <column datatype='real' name='against_steel' ordinal='17' />
+                <column datatype='real' name='against_water' ordinal='18' />
+                <column datatype='integer' name='attack' ordinal='19' />
+                <column datatype='integer' name='base_egg_steps' ordinal='20' />
+                <column datatype='integer' name='base_happiness' ordinal='21' />
+                <column datatype='integer' name='base_total' ordinal='22' />
+                <column datatype='integer' name='capture_rate' ordinal='23' />
+                <column datatype='string' name='classfication' ordinal='24' />
+                <column datatype='integer' name='defense' ordinal='25' />
+                <column datatype='integer' name='experience_growth' ordinal='26' />
+                <column datatype='real' name='height_m' ordinal='27' />
+                <column datatype='integer' name='hp' ordinal='28' />
+                <column datatype='string' name='japanese_name' ordinal='29' />
+                <column datatype='string' name='name' ordinal='30' />
+                <column datatype='real' name='percentage_male' ordinal='31' />
+                <column datatype='integer' name='pokedex_number' ordinal='32' />
+                <column datatype='integer' name='sp_attack' ordinal='33' />
+                <column datatype='integer' name='sp_defense' ordinal='34' />
+                <column datatype='integer' name='speed' ordinal='35' />
+                <column datatype='string' name='type1' ordinal='36' />
+                <column datatype='string' name='type2' ordinal='37' />
+                <column datatype='real' name='weight_kg' ordinal='38' />
+                <column datatype='integer' name='generation' ordinal='39' />
+                <column datatype='integer' name='is_legendary' ordinal='40' />
+              </columns>
+            </relation>
+          </relation>
+          <relation connection='textscan.4ce5ccb3be4ac7e965e9b040db0a' name='trainer' table='[trainer#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='string' name='trainer_id' ordinal='0' />
+              <column datatype='string' name='trainer_name' ordinal='1' />
+              <column datatype='string' name='trainer_class' ordinal='2' />
+              <column datatype='string' name='home_region' ordinal='3' />
+              <column datatype='string' name='hometown' ordinal='4' />
+              <column datatype='string' name='preferred_type' ordinal='5' />
+              <column datatype='string' name='secondary_type' ordinal='6' />
+              <column datatype='string' name='experience_tier' ordinal='7' />
+              <column datatype='integer' name='strategy_rating' ordinal='8' />
+              <column datatype='integer' name='adaptability_rating' ordinal='9' />
+              <column datatype='integer' name='aggression_rating' ordinal='10' />
+              <column datatype='integer' name='years_experience' ordinal='11' />
+              <column datatype='integer' name='is_gym_leader' ordinal='12' />
+              <column datatype='integer' name='signature_pokemonid' ordinal='13' />
+            </columns>
+          </relation>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>battle_participant_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[battle_participant_id]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>battle_participant_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>battle_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[battle_id]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>battle_id</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>trainer_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[trainer_id]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>trainer_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>team_side</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[team_side]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>team_side</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pokemonid</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[pokemonid]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>pokemonid</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>slot_number</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[slot_number]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>slot_number</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_winner</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[is_winner]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>is_winner</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>fainted_flag</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[fainted_flag]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>fainted_flag</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>venue_type_match_flag</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[venue_type_match_flag]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>venue_type_match_flag</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>trainer_type_match_flag</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[trainer_type_match_flag]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>trainer_type_match_flag</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>venue_resistance_multiplier</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[venue_resistance_multiplier]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>venue_resistance_multiplier</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>base_power</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[base_power]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>base_power</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>adjusted_power</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[adjusted_power]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>adjusted_power</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_mvp_flag</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[is_mvp_flag]</local-name>
+            <parent-name>[battle_participant.csv]</parent-name>
+            <remote-alias>is_mvp_flag</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>abilities</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[abilities]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>abilities</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_bug</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_bug]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_bug</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_dark</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_dark]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_dark</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_dragon</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_dragon]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_dragon</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_electric</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_electric]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_electric</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_fairy</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_fairy]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_fairy</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_fight</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_fight]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_fight</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_fire</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_fire]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_fire</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_flying</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_flying]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_flying</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_ghost</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_ghost]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_ghost</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_grass</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_grass]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_grass</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_ground</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_ground]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_ground</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_ice</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_ice]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_ice</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_normal</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_normal]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_normal</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_poison</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_poison]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_poison</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_psychic</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_psychic]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_psychic</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_rock</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_rock]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_rock</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_steel</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_steel]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_steel</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>against_water</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[against_water]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>against_water</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>attack</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[attack]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>attack</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>base_egg_steps</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[base_egg_steps]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>base_egg_steps</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>base_happiness</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[base_happiness]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>base_happiness</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>base_total</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[base_total]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>base_total</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>capture_rate</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[capture_rate]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>capture_rate</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>classfication</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[classfication]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>classfication</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>defense</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[defense]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>defense</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>experience_growth</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[experience_growth]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>experience_growth</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>height_m</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[height_m]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>height_m</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hp</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[hp]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>hp</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>japanese_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[japanese_name]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>japanese_name</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[name]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>name</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>percentage_male</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[percentage_male]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>percentage_male</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>pokedex_number</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[pokedex_number]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>pokedex_number</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sp_attack</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[sp_attack]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>sp_attack</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>sp_defense</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[sp_defense]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>sp_defense</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>speed</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[speed]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>speed</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>type1</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[type1]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>type1</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>type2</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[type2]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>type2</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>weight_kg</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[weight_kg]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>weight_kg</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>generation</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[generation]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>generation</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_legendary</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[is_legendary]</local-name>
+            <parent-name>[pokemon.csv]</parent-name>
+            <remote-alias>is_legendary</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>trainer_id</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[trainer_id]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>trainer_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>trainer_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[trainer_name]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>trainer_name</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>trainer_class</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[trainer_class]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>trainer_class</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>home_region</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[home_region]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>home_region</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>hometown</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[hometown]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>hometown</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>preferred_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[preferred_type]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>preferred_type</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>secondary_type</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[secondary_type]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>secondary_type</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>experience_tier</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[experience_tier]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>experience_tier</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>strategy_rating</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[strategy_rating]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>strategy_rating</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>adaptability_rating</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[adaptability_rating]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>adaptability_rating</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>aggression_rating</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[aggression_rating]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>aggression_rating</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>years_experience</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[years_experience]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>years_experience</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>is_gym_leader</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[is_gym_leader]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>is_gym_leader</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>signature_pokemonid</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[signature_pokemonid]</local-name>
+            <parent-name>[trainer.csv]</parent-name>
+            <remote-alias>signature_pokemonid</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Legendary Label' datatype='string' name='[Calculation_46ed49601c32ae2695]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IIF([pokemon_is_legendary]=1, &quot;Legendary&quot;, &quot;Standard&quot;)' />
+      </column>
+      <column caption='Gym Leader Label' datatype='string' name='[Calculation_b59f1310a467fd6890]' role='dimension' type='nominal'>
+        <calculation class='tableau' formula='IIF([trainer_is_gym_leader]=1, &quot;Gym Leader&quot;, &quot;Regular&quot;)' />
+      </column>
+      <_.fcp.ObjectModelTableType.true...column caption='battle_participant' datatype='table' name='[__tableau_internal_object_id__].[battle_participant_583F566210B18090DCE5A7035C6CABD6]' role='measure' type='quantitative' />
+      <column caption='adjusted_power' datatype='real' name='[adjusted_power]' role='measure' type='quantitative' />
+      <column caption='base_power' datatype='real' name='[base_power]' role='measure' type='quantitative' />
+      <column caption='battle_id' datatype='string' name='[battle_id]' role='dimension' type='nominal' />
+      <column caption='battle_participant_id' datatype='string' name='[battle_participant_id]' role='dimension' type='nominal' />
+      <column caption='is_mvp_flag' datatype='integer' name='[is_mvp_flag]' role='dimension' type='ordinal' />
+      <column caption='is_winner' datatype='integer' name='[is_winner]' role='dimension' type='ordinal' />
+      <column caption='pokemon_base_total' datatype='integer' name='[pokemon_base_total]' role='measure' type='quantitative' />
+      <column caption='pokemon_generation' datatype='integer' name='[pokemon_generation]' role='dimension' type='ordinal' />
+      <column caption='pokemon_is_legendary' datatype='integer' name='[pokemon_is_legendary]' role='dimension' type='ordinal' />
+      <column caption='pokemon_name' datatype='string' name='[pokemon_name]' role='dimension' type='nominal' />
+      <column caption='pokemon_type1' datatype='string' name='[pokemon_type1]' role='dimension' type='nominal' />
+      <column caption='pokemon_type2' datatype='string' name='[pokemon_type2]' role='dimension' type='nominal' />
+      <column caption='pokemonid' datatype='integer' name='[pokemonid]' role='dimension' type='ordinal' />
+      <column caption='slot_number' datatype='integer' name='[slot_number]' role='dimension' type='ordinal' />
+      <column caption='team_side' datatype='string' name='[team_side]' role='dimension' type='nominal' />
+      <column caption='trainer_experience_tier' datatype='string' name='[trainer_experience_tier]' role='dimension' type='nominal' />
+      <column caption='trainer_home_region' datatype='string' name='[trainer_home_region]' role='dimension' type='nominal' />
+      <column caption='trainer_id' datatype='string' name='[trainer_id]' role='dimension' type='nominal' />
+      <column caption='trainer_is_gym_leader' datatype='integer' name='[trainer_is_gym_leader]' role='dimension' type='ordinal' />
+      <column caption='trainer_preferred_type' datatype='string' name='[trainer_preferred_type]' role='dimension' type='nominal' />
+      <column caption='trainer_trainer_class' datatype='string' name='[trainer_trainer_class]' role='dimension' type='nominal' />
+      <column caption='trainer_trainer_name' datatype='string' name='[trainer_trainer_name]' role='dimension' type='nominal' />
+      <column caption='trainer_years_experience' datatype='integer' name='[trainer_years_experience]' role='measure' type='quantitative' />
+      <column caption='venue_type_match_flag' datatype='integer' name='[venue_type_match_flag]' role='dimension' type='ordinal' />
+      <extract _.fcp.ObjectModelExtractV2.true...object-id='' _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' units='records'>
+        <connection access_mode='readonly' author-locale='en_US' class='hyper' dbname='Data/Data/battle_participant_joined.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='01/01/2026 12:00:00 AM' username='tableau_internal_user'>
+          <_.fcp.ObjectModelEncapsulateLegacy.false...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <_.fcp.ObjectModelEncapsulateLegacy.true...relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>battle_participant_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[battle_participant_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>battle_participant_id</remote-alias>
+              <ordinal>0</ordinal>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>36451</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>battle_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[battle_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>battle_id</remote-alias>
+              <ordinal>1</ordinal>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>10548</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>trainer_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[trainer_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>trainer_id</remote-alias>
+              <ordinal>2</ordinal>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>203</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>team_side</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[team_side]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>team_side</remote-alias>
+              <ordinal>3</ordinal>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>pokemonid</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[pokemonid]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>pokemonid</remote-alias>
+              <ordinal>4</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1387</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>slot_number</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[slot_number]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>slot_number</remote-alias>
+              <ordinal>5</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>is_winner</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[is_winner]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>is_winner</remote-alias>
+              <ordinal>6</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>is_mvp_flag</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[is_mvp_flag]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>is_mvp_flag</remote-alias>
+              <ordinal>7</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>venue_type_match_flag</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[venue_type_match_flag]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>venue_type_match_flag</remote-alias>
+              <ordinal>8</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>base_power</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[base_power]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>base_power</remote-alias>
+              <ordinal>9</ordinal>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1339</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>adjusted_power</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[adjusted_power]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>adjusted_power</remote-alias>
+              <ordinal>10</ordinal>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>16148</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>pokemon_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[pokemon_name]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>pokemon_name</remote-alias>
+              <ordinal>11</ordinal>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1387</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>pokemon_type1</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[pokemon_type1]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>pokemon_type1</remote-alias>
+              <ordinal>12</ordinal>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>18</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>pokemon_type2</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[pokemon_type2]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>pokemon_type2</remote-alias>
+              <ordinal>13</ordinal>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>19</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>pokemon_generation</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[pokemon_generation]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>pokemon_generation</remote-alias>
+              <ordinal>14</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>7</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>pokemon_is_legendary</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[pokemon_is_legendary]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>pokemon_is_legendary</remote-alias>
+              <ordinal>15</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>pokemon_base_total</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[pokemon_base_total]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>pokemon_base_total</remote-alias>
+              <ordinal>16</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>334</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>trainer_trainer_name</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[trainer_trainer_name]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>trainer_trainer_name</remote-alias>
+              <ordinal>17</ordinal>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>203</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>trainer_trainer_class</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[trainer_trainer_class]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>trainer_trainer_class</remote-alias>
+              <ordinal>18</ordinal>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>53</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>trainer_home_region</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[trainer_home_region]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>trainer_home_region</remote-alias>
+              <ordinal>19</ordinal>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>7</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>trainer_preferred_type</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[trainer_preferred_type]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>trainer_preferred_type</remote-alias>
+              <ordinal>20</ordinal>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>18</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>trainer_experience_tier</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[trainer_experience_tier]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>trainer_experience_tier</remote-alias>
+              <ordinal>21</ordinal>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='binary' />
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>trainer_is_gym_leader</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[trainer_is_gym_leader]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>trainer_is_gym_leader</remote-alias>
+              <ordinal>22</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>trainer_years_experience</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[trainer_years_experience]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>trainer_years_experience</remote-alias>
+              <ordinal>23</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>23</approx-count>
+              <contains-null>true</contains-null>
+              <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[battle_participant_583F566210B18090DCE5A7035C6CABD6]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='battle_participant' id='battle_participant_583F566210B18090DCE5A7035C6CABD6'>
+            <properties context=''>
+              <relation join='left' type='join'>
+                <clause type='join'>
+                  <expression op='='>
+                    <expression op='[battle_participant].[trainer_id]' />
+                    <expression op='[trainer].[trainer_id]' />
+                  </expression>
+                </clause>
+                <relation join='left' type='join'>
+                  <clause type='join'>
+                    <expression op='='>
+                      <expression op='[battle_participant].[pokemonid]' />
+                      <expression op='[pokemon].[pokedex_number]' />
+                    </expression>
+                  </clause>
+                  <relation connection='textscan.320c0d871079ea94a5f5df38f3ef' name='battle_participant' table='[battle_participant#csv]' type='table'>
+                    <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                      <column datatype='string' name='battle_participant_id' ordinal='0' />
+                      <column datatype='string' name='battle_id' ordinal='1' />
+                      <column datatype='string' name='trainer_id' ordinal='2' />
+                      <column datatype='string' name='team_side' ordinal='3' />
+                      <column datatype='integer' name='pokemonid' ordinal='4' />
+                      <column datatype='integer' name='slot_number' ordinal='5' />
+                      <column datatype='integer' name='is_winner' ordinal='6' />
+                      <column datatype='integer' name='fainted_flag' ordinal='7' />
+                      <column datatype='integer' name='venue_type_match_flag' ordinal='8' />
+                      <column datatype='integer' name='trainer_type_match_flag' ordinal='9' />
+                      <column datatype='real' name='venue_resistance_multiplier' ordinal='10' />
+                      <column datatype='real' name='base_power' ordinal='11' />
+                      <column datatype='real' name='adjusted_power' ordinal='12' />
+                      <column datatype='integer' name='is_mvp_flag' ordinal='13' />
+                    </columns>
+                  </relation>
+                  <relation connection='textscan.a5ac814f30a74a5f47e3b1ed5280' name='pokemon' table='[pokemon#csv]' type='table'>
+                    <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                      <column datatype='string' name='abilities' ordinal='0' />
+                      <column datatype='real' name='against_bug' ordinal='1' />
+                      <column datatype='real' name='against_dark' ordinal='2' />
+                      <column datatype='real' name='against_dragon' ordinal='3' />
+                      <column datatype='real' name='against_electric' ordinal='4' />
+                      <column datatype='real' name='against_fairy' ordinal='5' />
+                      <column datatype='real' name='against_fight' ordinal='6' />
+                      <column datatype='real' name='against_fire' ordinal='7' />
+                      <column datatype='real' name='against_flying' ordinal='8' />
+                      <column datatype='real' name='against_ghost' ordinal='9' />
+                      <column datatype='real' name='against_grass' ordinal='10' />
+                      <column datatype='real' name='against_ground' ordinal='11' />
+                      <column datatype='real' name='against_ice' ordinal='12' />
+                      <column datatype='real' name='against_normal' ordinal='13' />
+                      <column datatype='real' name='against_poison' ordinal='14' />
+                      <column datatype='real' name='against_psychic' ordinal='15' />
+                      <column datatype='real' name='against_rock' ordinal='16' />
+                      <column datatype='real' name='against_steel' ordinal='17' />
+                      <column datatype='real' name='against_water' ordinal='18' />
+                      <column datatype='integer' name='attack' ordinal='19' />
+                      <column datatype='integer' name='base_egg_steps' ordinal='20' />
+                      <column datatype='integer' name='base_happiness' ordinal='21' />
+                      <column datatype='integer' name='base_total' ordinal='22' />
+                      <column datatype='integer' name='capture_rate' ordinal='23' />
+                      <column datatype='string' name='classfication' ordinal='24' />
+                      <column datatype='integer' name='defense' ordinal='25' />
+                      <column datatype='integer' name='experience_growth' ordinal='26' />
+                      <column datatype='real' name='height_m' ordinal='27' />
+                      <column datatype='integer' name='hp' ordinal='28' />
+                      <column datatype='string' name='japanese_name' ordinal='29' />
+                      <column datatype='string' name='name' ordinal='30' />
+                      <column datatype='real' name='percentage_male' ordinal='31' />
+                      <column datatype='integer' name='pokedex_number' ordinal='32' />
+                      <column datatype='integer' name='sp_attack' ordinal='33' />
+                      <column datatype='integer' name='sp_defense' ordinal='34' />
+                      <column datatype='integer' name='speed' ordinal='35' />
+                      <column datatype='string' name='type1' ordinal='36' />
+                      <column datatype='string' name='type2' ordinal='37' />
+                      <column datatype='real' name='weight_kg' ordinal='38' />
+                      <column datatype='integer' name='generation' ordinal='39' />
+                      <column datatype='integer' name='is_legendary' ordinal='40' />
+                    </columns>
+                  </relation>
+                </relation>
+                <relation connection='textscan.4ce5ccb3be4ac7e965e9b040db0a' name='trainer' table='[trainer#csv]' type='table'>
+                  <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                    <column datatype='string' name='trainer_id' ordinal='0' />
+                    <column datatype='string' name='trainer_name' ordinal='1' />
+                    <column datatype='string' name='trainer_class' ordinal='2' />
+                    <column datatype='string' name='home_region' ordinal='3' />
+                    <column datatype='string' name='hometown' ordinal='4' />
+                    <column datatype='string' name='preferred_type' ordinal='5' />
+                    <column datatype='string' name='secondary_type' ordinal='6' />
+                    <column datatype='string' name='experience_tier' ordinal='7' />
+                    <column datatype='integer' name='strategy_rating' ordinal='8' />
+                    <column datatype='integer' name='adaptability_rating' ordinal='9' />
+                    <column datatype='integer' name='aggression_rating' ordinal='10' />
+                    <column datatype='integer' name='years_experience' ordinal='11' />
+                    <column datatype='integer' name='is_gym_leader' ordinal='12' />
+                    <column datatype='integer' name='signature_pokemonid' ordinal='13' />
+                  </columns>
+                </relation>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='01 Avg Power by Pokemon Type'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='battle_participant + pokemon + trainer' name='federated.db14afd1cef0f6995b5a89a62806' />
+          </datasources>
+          <datasource-dependencies datasource='federated.db14afd1cef0f6995b5a89a62806'>
+            <column caption='Legendary Label' datatype='string' name='[Calculation_46ed49601c32ae2695]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IIF([pokemon_is_legendary]=1, &quot;Legendary&quot;, &quot;Standard&quot;)' />
+            </column>
+            <column caption='adjusted_power' datatype='real' name='[adjusted_power]' role='measure' type='quantitative' />
+            <column-instance column='[adjusted_power]' derivation='Avg' name='[avg:adjusted_power:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_46ed49601c32ae2695]' derivation='None' name='[none:Calculation_46ed49601c32ae2695:nk]' pivot='key' type='nominal' />
+            <column-instance column='[pokemon_type1]' derivation='None' name='[none:pokemon_type1:nk]' pivot='key' type='nominal' />
+            <column caption='pokemon_is_legendary' datatype='integer' name='[pokemon_is_legendary]' role='dimension' type='ordinal' />
+            <column caption='pokemon_type1' datatype='string' name='[pokemon_type1]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.db14afd1cef0f6995b5a89a62806].[none:Calculation_46ed49601c32ae2695:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.db14afd1cef0f6995b5a89a62806].[avg:adjusted_power:qk]</rows>
+        <cols>[federated.db14afd1cef0f6995b5a89a62806].[none:pokemon_type1:nk]</cols>
+      </table>
+      <simple-id uuid='{36972426-E49C-C33F-CBA8-B2D19D2DA79F}' />
+    </worksheet>
+    <worksheet name='02 Win Rate by Trainer Class'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='battle_participant + pokemon + trainer' name='federated.db14afd1cef0f6995b5a89a62806' />
+          </datasources>
+          <datasource-dependencies datasource='federated.db14afd1cef0f6995b5a89a62806'>
+            <column-instance column='[is_winner]' derivation='Avg' name='[avg:is_winner:qk]' pivot='key' type='quantitative' />
+            <column caption='is_winner' datatype='integer' name='[is_winner]' role='dimension' type='ordinal' />
+            <column-instance column='[trainer_trainer_class]' derivation='None' name='[none:trainer_trainer_class:nk]' pivot='key' type='nominal' />
+            <column caption='trainer_trainer_class' datatype='string' name='[trainer_trainer_class]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+          </pane>
+        </panes>
+        <rows>[federated.db14afd1cef0f6995b5a89a62806].[avg:is_winner:qk]</rows>
+        <cols>[federated.db14afd1cef0f6995b5a89a62806].[none:trainer_trainer_class:nk]</cols>
+      </table>
+      <simple-id uuid='{86109F37-5400-9FDC-3DAE-0D1F7F5F9BAE}' />
+    </worksheet>
+    <worksheet name='03 Experience Tier Performance'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='battle_participant + pokemon + trainer' name='federated.db14afd1cef0f6995b5a89a62806' />
+          </datasources>
+          <datasource-dependencies datasource='federated.db14afd1cef0f6995b5a89a62806'>
+            <column caption='Gym Leader Label' datatype='string' name='[Calculation_b59f1310a467fd6890]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IIF([trainer_is_gym_leader]=1, &quot;Gym Leader&quot;, &quot;Regular&quot;)' />
+            </column>
+            <column-instance column='[is_winner]' derivation='Avg' name='[avg:is_winner:qk]' pivot='key' type='quantitative' />
+            <column caption='is_winner' datatype='integer' name='[is_winner]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_b59f1310a467fd6890]' derivation='None' name='[none:Calculation_b59f1310a467fd6890:nk]' pivot='key' type='nominal' />
+            <column-instance column='[trainer_experience_tier]' derivation='None' name='[none:trainer_experience_tier:nk]' pivot='key' type='nominal' />
+            <column caption='trainer_experience_tier' datatype='string' name='[trainer_experience_tier]' role='dimension' type='nominal' />
+            <column caption='trainer_is_gym_leader' datatype='integer' name='[trainer_is_gym_leader]' role='dimension' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.db14afd1cef0f6995b5a89a62806].[none:Calculation_b59f1310a467fd6890:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.db14afd1cef0f6995b5a89a62806].[avg:is_winner:qk]</rows>
+        <cols>[federated.db14afd1cef0f6995b5a89a62806].[none:trainer_experience_tier:nk]</cols>
+      </table>
+      <simple-id uuid='{A3B8DEDE-3E07-701E-B970-7CA0D034930E}' />
+    </worksheet>
+    <worksheet name='04 Region x Type Heat Map'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='battle_participant + pokemon + trainer' name='federated.db14afd1cef0f6995b5a89a62806' />
+          </datasources>
+          <datasource-dependencies datasource='federated.db14afd1cef0f6995b5a89a62806'>
+            <column caption='battle_participant_id' datatype='string' name='[battle_participant_id]' role='dimension' type='nominal' />
+            <column-instance column='[battle_participant_id]' derivation='Count' name='[cnt:battle_participant_id:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[pokemon_type1]' derivation='None' name='[none:pokemon_type1:nk]' pivot='key' type='nominal' />
+            <column-instance column='[trainer_home_region]' derivation='None' name='[none:trainer_home_region:nk]' pivot='key' type='nominal' />
+            <column caption='pokemon_type1' datatype='string' name='[pokemon_type1]' role='dimension' type='nominal' />
+            <column caption='trainer_home_region' datatype='string' name='[trainer_home_region]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Square' />
+            <encodings>
+              <color column='[federated.db14afd1cef0f6995b5a89a62806].[cnt:battle_participant_id:qk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.db14afd1cef0f6995b5a89a62806].[none:pokemon_type1:nk]</rows>
+        <cols>[federated.db14afd1cef0f6995b5a89a62806].[none:trainer_home_region:nk]</cols>
+      </table>
+      <simple-id uuid='{4183EDA9-32E8-4BA3-8345-99C5E65D2F15}' />
+    </worksheet>
+    <worksheet name='05 Legendary MVP Rate'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='battle_participant + pokemon + trainer' name='federated.db14afd1cef0f6995b5a89a62806' />
+          </datasources>
+          <datasource-dependencies datasource='federated.db14afd1cef0f6995b5a89a62806'>
+            <column caption='Legendary Label' datatype='string' name='[Calculation_46ed49601c32ae2695]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IIF([pokemon_is_legendary]=1, &quot;Legendary&quot;, &quot;Standard&quot;)' />
+            </column>
+            <column-instance column='[is_mvp_flag]' derivation='Avg' name='[avg:is_mvp_flag:qk]' pivot='key' type='quantitative' />
+            <column caption='is_mvp_flag' datatype='integer' name='[is_mvp_flag]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_46ed49601c32ae2695]' derivation='None' name='[none:Calculation_46ed49601c32ae2695:nk]' pivot='key' type='nominal' />
+            <column caption='pokemon_is_legendary' datatype='integer' name='[pokemon_is_legendary]' role='dimension' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+          </pane>
+        </panes>
+        <rows>[federated.db14afd1cef0f6995b5a89a62806].[avg:is_mvp_flag:qk]</rows>
+        <cols>[federated.db14afd1cef0f6995b5a89a62806].[none:Calculation_46ed49601c32ae2695:nk]</cols>
+      </table>
+      <simple-id uuid='{F8BA24EE-E439-2CB5-DFC6-8966B9684E7F}' />
+    </worksheet>
+    <worksheet name='06 Gym Leader Win Rate by Type'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='battle_participant + pokemon + trainer' name='federated.db14afd1cef0f6995b5a89a62806' />
+          </datasources>
+          <datasource-dependencies datasource='federated.db14afd1cef0f6995b5a89a62806'>
+            <column caption='Gym Leader Label' datatype='string' name='[Calculation_b59f1310a467fd6890]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IIF([trainer_is_gym_leader]=1, &quot;Gym Leader&quot;, &quot;Regular&quot;)' />
+            </column>
+            <column-instance column='[is_winner]' derivation='Avg' name='[avg:is_winner:qk]' pivot='key' type='quantitative' />
+            <column caption='is_winner' datatype='integer' name='[is_winner]' role='dimension' type='ordinal' />
+            <column-instance column='[Calculation_b59f1310a467fd6890]' derivation='None' name='[none:Calculation_b59f1310a467fd6890:nk]' pivot='key' type='nominal' />
+            <column-instance column='[pokemon_type1]' derivation='None' name='[none:pokemon_type1:nk]' pivot='key' type='nominal' />
+            <column caption='pokemon_type1' datatype='string' name='[pokemon_type1]' role='dimension' type='nominal' />
+            <column caption='trainer_is_gym_leader' datatype='integer' name='[trainer_is_gym_leader]' role='dimension' type='ordinal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.db14afd1cef0f6995b5a89a62806].[none:Calculation_b59f1310a467fd6890:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.db14afd1cef0f6995b5a89a62806].[avg:is_winner:qk]</rows>
+        <cols>[federated.db14afd1cef0f6995b5a89a62806].[none:pokemon_type1:nk]</cols>
+      </table>
+      <simple-id uuid='{CB475A33-FD4B-8336-7979-917A5889E299}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='01 Avg Power by Pokemon Type'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{DEAC22BB-E49C-C33F-CBA8-B2D19D2DA79F}' />
+    </window>
+    <window class='worksheet' name='02 Win Rate by Trainer Class'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{2B95786B-5400-9FDC-3DAE-0D1F7F5F9BAE}' />
+    </window>
+    <window class='worksheet' name='03 Experience Tier Performance'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{03DD5491-3E07-701E-B970-7CA0D034930E}' />
+    </window>
+    <window class='worksheet' name='04 Region x Type Heat Map'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{3524D562-32E8-4BA3-8345-99C5E65D2F15}' />
+    </window>
+    <window class='worksheet' name='05 Legendary MVP Rate'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{0DE3B1BD-E439-2CB5-DFC6-8966B9684E7F}' />
+    </window>
+    <window class='worksheet' name='06 Gym Leader Win Rate by Type'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{FBEEDE17-FD4B-8336-7979-917A5889E299}' />
+    </window>
+  </windows>
+</workbook>

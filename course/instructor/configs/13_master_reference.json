@@ -1,0 +1,596 @@
+{
+  "title": "Lesson 13 - MASTER Pokemon Battle Universe (Instructor Reference)",
+  "output_twbx": "instructor/workbooks/13_master_reference.twbx",
+  "datasource_caption": "pokemon_battle_universe",
+  "tables": [
+    {
+      "alias": "battle_participant",
+      "csv_path": "shared/raw_data/battle_participant.csv",
+      "columns": [
+        {
+          "name": "battle_participant_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "battle_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "trainer_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "team_side",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "pokemonid",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "slot_number",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "is_winner",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "is_mvp_flag",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_type_match_flag",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "base_power",
+          "datatype": "real",
+          "role": "measure"
+        },
+        {
+          "name": "adjusted_power",
+          "datatype": "real",
+          "role": "measure"
+        }
+      ]
+    },
+    {
+      "alias": "pokemon",
+      "csv_path": "shared/raw_data/pokemon.csv",
+      "columns": [
+        {
+          "name": "pokedex_number",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "name",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "type1",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "type2",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "generation",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "is_legendary",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "base_total",
+          "datatype": "integer",
+          "role": "measure"
+        }
+      ]
+    },
+    {
+      "alias": "trainer",
+      "csv_path": "shared/raw_data/trainer.csv",
+      "columns": [
+        {
+          "name": "trainer_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "trainer_name",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "trainer_class",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "home_region",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "experience_tier",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "is_gym_leader",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "years_experience",
+          "datatype": "integer",
+          "role": "measure"
+        }
+      ]
+    },
+    {
+      "alias": "battles",
+      "csv_path": "shared/raw_data/battles.csv",
+      "columns": [
+        {
+          "name": "battle_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "battle_date",
+          "datatype": "date",
+          "role": "dimension"
+        },
+        {
+          "name": "battle_format",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "winning_side",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "attendance",
+          "datatype": "integer",
+          "role": "measure"
+        }
+      ]
+    },
+    {
+      "alias": "venue",
+      "csv_path": "shared/raw_data/venue.csv",
+      "columns": [
+        {
+          "name": "venue_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_name",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "region",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "lat",
+          "datatype": "real",
+          "role": "measure",
+          "semantic_role": "[Latitude].[Latitude]"
+        },
+        {
+          "name": "lon",
+          "datatype": "real",
+          "role": "measure",
+          "semantic_role": "[Longitude].[Longitude]"
+        },
+        {
+          "name": "venue_type",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "prestige_tier",
+          "datatype": "string",
+          "role": "dimension"
+        }
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "left_table": "battle_participant",
+      "left_col": "pokemonid",
+      "right_table": "pokemon",
+      "right_col": "pokedex_number",
+      "join_type": "left"
+    },
+    {
+      "left_table": "battle_participant",
+      "left_col": "trainer_id",
+      "right_table": "trainer",
+      "right_col": "trainer_id",
+      "join_type": "left"
+    },
+    {
+      "left_table": "battle_participant",
+      "left_col": "battle_id",
+      "right_table": "battles",
+      "right_col": "battle_id",
+      "join_type": "left"
+    },
+    {
+      "left_table": "battles",
+      "left_col": "venue_id",
+      "right_table": "venue",
+      "right_col": "venue_id",
+      "join_type": "left"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "Legendary Label",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([pokemon_is_legendary]=1, \"Legendary\", \"Standard\")"
+    },
+    {
+      "caption": "Gym Leader Label",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([trainer_is_gym_leader]=1, \"Gym Leader\", \"Regular\")"
+    },
+    {
+      "caption": "Power Tier",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IF [adjusted_power] >= 600 THEN \"S-Tier\"\nELSEIF [adjusted_power] >= 500 THEN \"A-Tier\"\nELSEIF [adjusted_power] >= 400 THEN \"B-Tier\"\nELSE \"C-Tier\"\nEND"
+    },
+    {
+      "caption": "Type Advantage Match",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([pokemon_type1]=[venue_venue_type], \"Aligned\", \"Not Aligned\")"
+    },
+    {
+      "caption": "Power Boost",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "[adjusted_power] - [base_power]"
+    },
+    {
+      "caption": "Pokemon Win Rate (FIXED)",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [pokemon_name] : AVG([is_winner]) }"
+    },
+    {
+      "caption": "Pokemon Type Win Rate (FIXED)",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [pokemon_type1] : AVG([is_winner]) }"
+    },
+    {
+      "caption": "Trainer Win Rate (FIXED)",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [trainer_id] : AVG([is_winner]) }"
+    },
+    {
+      "caption": "Type x Venue Win Rate",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [pokemon_type1], [venue_venue_type] : AVG([is_winner]) }"
+    },
+    {
+      "caption": "Trainer x Type Win Rate",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [trainer_id], [pokemon_type1] : AVG([is_winner]) }"
+    },
+    {
+      "caption": "Venue Battles (FIXED)",
+      "datatype": "integer",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [battles_venue_id] : COUNTD([battle_id]) }"
+    },
+    {
+      "caption": "MVP Win Rate",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [pokemon_name] : AVG([is_mvp_flag]) }"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "Q1 Best Type per Venue Type",
+      "mark": "Square",
+      "rows": [
+        {
+          "field": "pokemon_type1",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_venue_type",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "Type x Venue Win Rate",
+        "agg": "Avg"
+      }
+    },
+    {
+      "name": "Q2 Venue Map - Battle Counts",
+      "mark": "Automatic",
+      "rows": [
+        {
+          "field": "venue_lat",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_lon",
+          "agg": "Avg"
+        }
+      ],
+      "color": {
+        "field": "venue_venue_type",
+        "agg": "None"
+      },
+      "size": {
+        "field": "Venue Battles (FIXED)",
+        "agg": "Avg"
+      }
+    },
+    {
+      "name": "Q3 Trainer Win Rate by Type",
+      "mark": "Square",
+      "rows": [
+        {
+          "field": "trainer_id",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "pokemon_type1",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "Trainer x Type Win Rate",
+        "agg": "Avg"
+      }
+    },
+    {
+      "name": "Q4 Win Rate Over Time",
+      "mark": "Line",
+      "rows": [
+        {
+          "field": "is_winner",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battles_battle_date",
+          "agg": "Month"
+        }
+      ],
+      "color": {
+        "field": "trainer_experience_tier",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "Q5 Type Win Rate Over Time",
+      "mark": "Line",
+      "rows": [
+        {
+          "field": "is_winner",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battles_battle_date",
+          "agg": "Quarter"
+        }
+      ],
+      "color": {
+        "field": "pokemon_type1",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "Q6 Most Successful Pokemon",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "Pokemon Win Rate (FIXED)",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "pokemon_name",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "Legendary Label",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "Q7 Most Successful Pokemon Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "Pokemon Type Win Rate (FIXED)",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "pokemon_type1",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "Q8 Power Tier Mix by Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_participant_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "pokemon_type1",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "Power Tier",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "Q9 Type Advantage Effect",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "is_winner",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "Type Advantage Match",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "Q10 MVP Pokemon by Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "MVP Win Rate",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "pokemon_type1",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "Q11 Power Boost by Match",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "Power Boost",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_type_match_flag",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "Q12 Region Performance",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "is_winner",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_region",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "Legendary Label",
+        "agg": "None"
+      }
+    }
+  ],
+  "dashboard": {
+    "name": "Pokemon Battle Universe - Apex Dashboard",
+    "size": [
+      1600,
+      2400
+    ],
+    "sheets": [
+      "Q1 Best Type per Venue Type",
+      "Q2 Venue Map - Battle Counts",
+      "Q3 Trainer Win Rate by Type",
+      "Q4 Win Rate Over Time",
+      "Q5 Type Win Rate Over Time",
+      "Q6 Most Successful Pokemon",
+      "Q7 Most Successful Pokemon Type",
+      "Q8 Power Tier Mix by Type",
+      "Q9 Type Advantage Effect",
+      "Q10 MVP Pokemon by Type",
+      "Q11 Power Boost by Match",
+      "Q12 Region Performance"
+    ]
+  }
+}

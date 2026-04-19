@@ -1,0 +1,166 @@
+{
+  "title": "Lesson 8 - Groups & Sets (Student Answer Key)",
+  "data_csv": "shared/raw_data/pokemon.csv",
+  "output_twbx": "student/workbooks/08_groups_sets_student.twbx",
+  "datasource_caption": "pokemon",
+  "columns": [
+    {
+      "name": "name",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "type1",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "type2",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "generation",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "is_legendary",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "hp",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "attack",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "defense",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "speed",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "base_total",
+      "datatype": "integer",
+      "role": "measure"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "Type Family (Group equivalent)",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IF [type1]=\"fire\" OR [type1]=\"water\" OR [type1]=\"grass\" THEN \"Starter Element\"\nELSEIF [type1]=\"dragon\" OR [type1]=\"psychic\" OR [type1]=\"ghost\" THEN \"Mystical\"\nELSE \"Other\"\nEND"
+    },
+    {
+      "caption": "Legendary Set",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([is_legendary]=1, \"In - Legendary\", \"Out\")"
+    },
+    {
+      "caption": "Heavy Hitter",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([attack] >= 100 AND [defense] >= 100, \"Yes\", \"No\")"
+    },
+    {
+      "caption": "Top 20 by Base Total (Set equivalent)",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([base_total] >= 600, \"In Top Tier\", \"Out\")"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "A - Type Family Counts",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "name",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "Type Family (Group equivalent)",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "B - Group on Cols + Set on Color",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "name",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "Type Family (Group equivalent)",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "Legendary Set",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "C - Heavy Hitters by Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "name",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "type1",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "Heavy Hitter",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "D - Top Tier Set",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "name",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "Top 20 by Base Total (Set equivalent)",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "type1",
+        "agg": "None"
+      }
+    }
+  ]
+}

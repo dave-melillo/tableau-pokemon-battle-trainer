@@ -1,0 +1,244 @@
+{
+  "title": "Lesson 4 - Joins Intro (Instructor)",
+  "output_twbx": "instructor/workbooks/04_joins_intro_instructor.twbx",
+  "datasource_caption": "battles + venue",
+  "tables": [
+    {
+      "alias": "battles",
+      "csv_path": "shared/raw_data/battles.csv",
+      "columns": [
+        {
+          "name": "battle_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "battle_date",
+          "datatype": "date",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "battle_format",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "trainer_home_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "trainer_away_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "trainer_winner_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "winning_side",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "battle_turns",
+          "datatype": "integer",
+          "role": "measure"
+        },
+        {
+          "name": "winning_margin",
+          "datatype": "real",
+          "role": "measure"
+        },
+        {
+          "name": "weather_condition",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "attendance",
+          "datatype": "integer",
+          "role": "measure"
+        }
+      ]
+    },
+    {
+      "alias": "venue",
+      "csv_path": "shared/raw_data/venue.csv",
+      "columns": [
+        {
+          "name": "venue_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_name",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "region",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_type",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "environment_style",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "indoor_outdoor",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "capacity",
+          "datatype": "integer",
+          "role": "measure"
+        },
+        {
+          "name": "prestige_tier",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "terrain_edge_pct",
+          "datatype": "real",
+          "role": "measure"
+        }
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "left_table": "battles",
+      "left_col": "venue_id",
+      "right_table": "venue",
+      "right_col": "venue_id",
+      "join_type": "left"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "Fill Rate",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "[attendance] / [venue_capacity]"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "01 Battles by Region (joined field)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_region",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "02 Avg Attendance by Venue Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "attendance",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_venue_type",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "03 Fill Rate by Prestige Tier",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "Fill Rate",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_prestige_tier",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "04 Indoor vs Outdoor Margin",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "winning_margin",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_indoor_outdoor",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "05 Battles by Venue Name (top 10)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_venue_name",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "06 Format Mix by Region",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_region",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "battle_format",
+        "agg": "None"
+      }
+    }
+  ]
+}

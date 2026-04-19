@@ -1,0 +1,98 @@
+{
+  "title": "Lesson 10 - Mapping (Student Answer Key)",
+  "data_csv": "shared/raw_data/venue.csv",
+  "output_twbx": "student/workbooks/10_mapping_student.twbx",
+  "datasource_caption": "venue",
+  "columns": [
+    {
+      "name": "venue_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "venue_name",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "region",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "lat",
+      "datatype": "real",
+      "role": "measure",
+      "semantic_role": "[Latitude].[Latitude]"
+    },
+    {
+      "name": "lon",
+      "datatype": "real",
+      "role": "measure",
+      "semantic_role": "[Longitude].[Longitude]"
+    },
+    {
+      "name": "venue_type",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "capacity",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "indoor_outdoor",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "prestige_tier",
+      "datatype": "string",
+      "role": "dimension"
+    }
+  ],
+  "calculated_fields": [],
+  "worksheets": [
+    {
+      "name": "A - Symbol Map (color+size)",
+      "mark": "Automatic",
+      "rows": [
+        {
+          "field": "lat",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "lon",
+          "agg": "Avg"
+        }
+      ],
+      "color": {
+        "field": "venue_type",
+        "agg": "None"
+      },
+      "size": {
+        "field": "capacity",
+        "agg": "Avg"
+      }
+    },
+    {
+      "name": "B - Companion Bar - Avg Cap by Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "capacity",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_type",
+          "agg": "None"
+        }
+      ]
+    }
+  ]
+}

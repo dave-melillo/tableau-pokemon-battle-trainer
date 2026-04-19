@@ -1,0 +1,128 @@
+{
+  "title": "Lesson 6 - Story (Student Answer Key)",
+  "data_csv": "shared/raw_data/battles.csv",
+  "output_twbx": "student/workbooks/06_story_student.twbx",
+  "datasource_caption": "battles",
+  "columns": [
+    {
+      "name": "battle_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "battle_date",
+      "datatype": "date",
+      "role": "dimension"
+    },
+    {
+      "name": "battle_format",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "winning_side",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "weather_condition",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "title_match_flag",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "attendance",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "winning_margin",
+      "datatype": "real",
+      "role": "measure"
+    },
+    {
+      "name": "battle_turns",
+      "datatype": "integer",
+      "role": "measure"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "Title Match Label",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([title_match_flag]=1, \"Title Match\", \"Regular\")"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "Story 1 - Battles Per Month",
+      "mark": "Line",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battle_date",
+          "agg": "Month"
+        }
+      ]
+    },
+    {
+      "name": "Story 2 - Format Mix",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battle_format",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "Story 3 - Home vs Away Wins",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "winning_side",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "Story 4 - Title Match Attendance",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "attendance",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "Title Match Label",
+          "agg": "None"
+        }
+      ]
+    }
+  ]
+}

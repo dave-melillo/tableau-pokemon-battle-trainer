@@ -1,0 +1,317 @@
+{
+  "title": "Lesson 11 - Dashboards (Instructor)",
+  "output_twbx": "instructor/workbooks/11_dashboards_instructor.twbx",
+  "datasource_caption": "battle_participant + pokemon + trainer + battles + venue",
+  "tables": [
+    {
+      "alias": "battle_participant",
+      "csv_path": "shared/raw_data/battle_participant.csv",
+      "columns": [
+        {
+          "name": "battle_participant_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "battle_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "trainer_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "team_side",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "pokemonid",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "is_winner",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "is_mvp_flag",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "adjusted_power",
+          "datatype": "real",
+          "role": "measure"
+        }
+      ]
+    },
+    {
+      "alias": "pokemon",
+      "csv_path": "shared/raw_data/pokemon.csv",
+      "columns": [
+        {
+          "name": "pokedex_number",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "name",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "type1",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "is_legendary",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "base_total",
+          "datatype": "integer",
+          "role": "measure"
+        }
+      ]
+    },
+    {
+      "alias": "trainer",
+      "csv_path": "shared/raw_data/trainer.csv",
+      "columns": [
+        {
+          "name": "trainer_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "trainer_class",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "experience_tier",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "home_region",
+          "datatype": "string",
+          "role": "dimension"
+        }
+      ]
+    },
+    {
+      "alias": "battles",
+      "csv_path": "shared/raw_data/battles.csv",
+      "columns": [
+        {
+          "name": "battle_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "battle_date",
+          "datatype": "date",
+          "role": "dimension"
+        },
+        {
+          "name": "battle_format",
+          "datatype": "string",
+          "role": "dimension"
+        }
+      ]
+    },
+    {
+      "alias": "venue",
+      "csv_path": "shared/raw_data/venue.csv",
+      "columns": [
+        {
+          "name": "venue_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "region",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_type",
+          "datatype": "string",
+          "role": "dimension"
+        }
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "left_table": "battle_participant",
+      "left_col": "pokemonid",
+      "right_table": "pokemon",
+      "right_col": "pokedex_number",
+      "join_type": "left"
+    },
+    {
+      "left_table": "battle_participant",
+      "left_col": "trainer_id",
+      "right_table": "trainer",
+      "right_col": "trainer_id",
+      "join_type": "left"
+    },
+    {
+      "left_table": "battle_participant",
+      "left_col": "battle_id",
+      "right_table": "battles",
+      "right_col": "battle_id",
+      "join_type": "left"
+    },
+    {
+      "left_table": "battles",
+      "left_col": "venue_id",
+      "right_table": "venue",
+      "right_col": "venue_id",
+      "join_type": "left"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "Legendary Label",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([pokemon_is_legendary]=1, \"Legendary\", \"Standard\")"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "D1 Power by Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "adjusted_power",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "pokemon_type1",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "Legendary Label",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "D2 Win Rate by Experience",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "is_winner",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "trainer_experience_tier",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "D3 Wins Over Time",
+      "mark": "Line",
+      "rows": [
+        {
+          "field": "is_winner",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battles_battle_date",
+          "agg": "Month"
+        }
+      ]
+    },
+    {
+      "name": "D4 Region Participation",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_participant_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_region",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "D5 Format Mix",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Countd"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battles_battle_format",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "D6 Type x Venue Heat Map",
+      "mark": "Square",
+      "rows": [
+        {
+          "field": "pokemon_type1",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_venue_type",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "is_winner",
+        "agg": "Avg"
+      }
+    }
+  ],
+  "dashboard": {
+    "name": "Battle Insights Dashboard",
+    "size": [
+      1400,
+      1400
+    ],
+    "sheets": [
+      "D1 Power by Type",
+      "D2 Win Rate by Experience",
+      "D3 Wins Over Time",
+      "D4 Region Participation",
+      "D5 Format Mix",
+      "D6 Type x Venue Heat Map"
+    ]
+  }
+}

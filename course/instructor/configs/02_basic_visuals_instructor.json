@@ -1,0 +1,301 @@
+{
+  "title": "Lesson 2 - Basic Visuals (Instructor)",
+  "data_csv": "shared/raw_data/pokemon.csv",
+  "output_twbx": "instructor/workbooks/02_basic_visuals_instructor.twbx",
+  "datasource_caption": "pokemon",
+  "columns": [
+    {
+      "name": "name",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "type1",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "type2",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "generation",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "is_legendary",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "hp",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "attack",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "defense",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "sp_attack",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "sp_defense",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "speed",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "base_total",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "weight_kg",
+      "datatype": "real",
+      "role": "measure"
+    },
+    {
+      "name": "height_m",
+      "datatype": "real",
+      "role": "measure"
+    },
+    {
+      "name": "capture_rate",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "percentage_male",
+      "datatype": "real",
+      "role": "measure"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "Legendary Label",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([is_legendary]=1, \"Legendary\", \"Standard\")"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "01 Bar - Count by Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "name",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "type1",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "02 Bar Sorted - Avg Attack by Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "attack",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "type1",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "03 Side-by-Side - Att vs Def",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "attack",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "type1",
+          "agg": "None"
+        },
+        {
+          "field": "Legendary Label",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "04 Stacked Bar - Type Mix by Gen",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "name",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "generation",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "type1",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "05 Line - Avg Total by Gen",
+      "mark": "Line",
+      "rows": [
+        {
+          "field": "base_total",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "generation",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "06 Area - Count by Gen",
+      "mark": "Area",
+      "rows": [
+        {
+          "field": "name",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "generation",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "07 Scatter - Att vs Def",
+      "mark": "Circle",
+      "rows": [
+        {
+          "field": "defense",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "attack",
+          "agg": "Avg"
+        }
+      ],
+      "color": {
+        "field": "type1",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "08 Bubble - Sized by HP",
+      "mark": "Circle",
+      "rows": [
+        {
+          "field": "defense",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "attack",
+          "agg": "Avg"
+        }
+      ],
+      "color": {
+        "field": "type1",
+        "agg": "None"
+      },
+      "size": {
+        "field": "hp",
+        "agg": "Avg"
+      }
+    },
+    {
+      "name": "09 Heat Map - Type x Gen",
+      "mark": "Square",
+      "rows": [
+        {
+          "field": "type1",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "generation",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "name",
+        "agg": "Count"
+      }
+    },
+    {
+      "name": "10 Text Table - Stat Summary",
+      "mark": "Text",
+      "rows": [
+        {
+          "field": "type1",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "base_total",
+          "agg": "Avg"
+        }
+      ],
+      "text": {
+        "field": "base_total",
+        "agg": "Avg"
+      }
+    },
+    {
+      "name": "11 Treemap - Pokemon by Type",
+      "mark": "Square",
+      "rows": [],
+      "cols": [],
+      "size": {
+        "field": "name",
+        "agg": "Count"
+      },
+      "color": {
+        "field": "type1",
+        "agg": "None"
+      }
+    }
+  ]
+}

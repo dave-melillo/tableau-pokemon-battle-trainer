@@ -1,0 +1,181 @@
+trainer_id,trainer_name,trainer_class,home_region,hometown,preferred_type,secondary_type,experience_tier,strategy_rating,adaptability_rating,aggression_rating,years_experience,is_gym_leader,signature_pokemonid
+T0001,Theo Stone,Forge Duelist,Johto,Goldenrod,fire,flying,Veteran,70,84,69,11,0,373
+T0002,Quinn Hale,Steel Marshal,Kalos,Lumiose,steel,dark,Elite,72,62,76,13,0,379
+T0003,Ari Cole,Martial Artist,Unova,Nimbasa,fighting,electric,Veteran,70,59,72,16,0,350
+T0004,Logan Pike,Night Operative,Alola,Seafolk,dark,fire,Elite,78,69,74,14,1,537
+T0005,Hayden Blaze,Glacier Keeper,Unova,Accumula,ice,rock,Elite,86,87,98,10,1,644
+T0006,Parker Mason,Dragon Tamer,Johto,Violet,dragon,fairy,Elite,96,75,56,14,1,445
+T0007,Taylor Blaze,Psychic,Hoenn,Slateport,psychic,rock,Elite,73,75,40,19,0,567
+T0008,Skyler Vale,Backpacker,Kalos,Anistar,ground,normal,Veteran,70,68,62,6,0,474
+T0009,Iris Dunn,Mind Reader,Hoenn,Mauville,psychic,flying,Elite,78,78,51,15,1,80
+T0010,Milo West,Toxic Specialist,Kalos,Shalour,poison,ground,Novice,52,53,73,4,0,34
+T0011,Logan Sable,Punk,Kanto,Celadon,dark,bug,Novice,67,53,56,1,0,411
+T0012,Kendall Sable,Ace Trainer,Unova,Castelia,steel,fighting,Veteran,78,69,66,12,0,142
+T0013,Zane Sable,Punk,Unova,Mistralton,dark,steel,Elite,82,78,61,9,1,484
+T0014,Reese Sterling,Excavator,Kalos,Lumiose,ground,electric,Veteran,67,82,89,4,0,94
+T0015,Lena Fox,Medium,Kanto,Vermilion,ghost,poison,Novice,65,45,97,2,0,94
+T0016,Logan Rivers,Firebreather,Hoenn,Rustboro,fire,water,Veteran,86,49,46,4,1,655
+T0017,Cameron Rowe,Hex Adept,Unova,Driftveil,psychic,dark,Veteran,76,53,77,5,0,635
+T0018,Elliot Ashford,Psychic,Alola,Heahea,psychic,rock,Veteran,79,73,54,11,0,251
+T0019,Nico Stone,Snow Scout,Sinnoh,Snowpoint,ice,fighting,Novice,53,56,60,5,0,91
+T0020,Sage Lake,Psychic,Hoenn,Mauville,psychic,bug,Elite,76,76,92,17,0,289
+T0021,Dakota Bloom,Snow Scout,Kanto,Vermilion,ice,grass,Novice,56,68,56,1,0,460
+T0022,Sam Rowe,Bandit,Kanto,Pewter,dark,grass,Novice,46,55,76,2,0,94
+T0023,Jules Frost,Sky Captain,Kalos,Couriway,dragon,fire,Veteran,66,65,83,5,0,652
+T0024,Parker Cole,Ace Trainer,Hoenn,Slateport,flying,water,Novice,65,58,75,4,0,334
+T0025,Luca Stone,Sky Captain,Unova,Mistralton,dragon,ice,Elite,75,73,58,11,0,475
+T0026,Avery Bloom,Ace Trainer,Alola,Seafolk,ice,water,Champion,88,85,91,20,1,221
+T0027,Toby Ember,Backpacker,Hoenn,Littleroot,ground,ice,Veteran,79,73,86,1,0,323
+T0028,Sawyer Pike,Veteran,Johto,Goldenrod,dragon,ground,Veteran,66,68,67,6,0,373
+T0029,Casey Hart,Punk,Johto,Violet,dark,fairy,Veteran,65,71,71,9,0,198
+T0030,Hayden Dunn,Technician,Johto,Azalea,electric,steel,Elite,80,75,63,14,1,181
+T0031,Reese Drake,Ace Trainer,Johto,Ecruteak,fire,psychic,Novice,53,54,74,2,0,260
+T0032,Lena Meadows,Performer,Hoenn,Mauville,fairy,ice,Elite,91,85,72,12,1,384
+T0033,Milo Drake,Medium,Hoenn,Slateport,ghost,electric,Veteran,68,62,61,5,0,471
+T0034,Sawyer Dunn,Herbalist,Johto,Violet,grass,ice,Veteran,80,72,83,5,0,460
+T0035,Micah Avery,Ace Trainer,Kalos,Couriway,fire,flying,Novice,69,52,77,9,0,681
+T0036,Parker Drake,Bandit,Kanto,Pewter,dark,electric,Elite,85,81,98,15,1,6
+T0037,Sawyer Cole,Sailor,Alola,Iki,water,dark,Veteran,74,74,69,3,0,260
+T0038,Blake Lake,Ace Trainer,Sinnoh,Snowpoint,dark,poison,Veteran,75,65,67,9,0,475
+T0039,Logan Sterling,Caretaker,Sinnoh,Hearthome,fairy,fighting,Veteran,72,57,80,9,0,700
+T0040,Nico Bloom,Youngster,Kanto,Vermilion,normal,fighting,Champion,92,94,60,18,1,445
+T0041,Nora Birch,Channeler,Johto,Violet,psychic,fire,Elite,84,85,54,16,1,289
+T0042,Luca Gale,Collector,Unova,Driftveil,bug,rock,Elite,83,71,85,16,0,596
+T0043,Micah Cross,Channeler,Johto,Ecruteak,ghost,flying,Veteran,75,69,77,5,1,354
+T0044,Quinn Rowe,Field Researcher,Hoenn,Sootopolis,bug,water,Veteran,66,69,77,7,0,319
+T0045,Zane Cross,Swimmer,Kalos,Coumarine,water,bug,Veteran,52,60,74,10,0,306
+T0046,Iris Rowe,Ranger,Kanto,Cerulean,grass,ice,Novice,53,58,69,4,0,470
+T0047,Toby Hart,Ace Trainer,Alola,Konikoni,flying,poison,Veteran,61,71,71,6,0,792
+T0048,Mina Wells,Psychic,Alola,Heahea,psychic,water,Elite,83,72,69,15,1,127
+T0049,Logan Stone,Pilot,Hoenn,Sootopolis,flying,dragon,Novice,49,51,86,2,0,706
+T0050,Logan Gale,Ace Trainer,Alola,Konikoni,ice,ghost,Elite,73,79,94,14,1,365
+T0051,Elliot Rowe,Ranger,Hoenn,Mauville,grass,fire,Novice,45,52,73,1,0,254
+T0052,Skyler Rowe,Veteran,Kanto,Celadon,dragon,poison,Champion,94,85,48,15,1,334
+T0053,Skyler Gale,Swimmer,Kalos,Couriway,water,ghost,Elite,85,63,80,11,1,135
+T0054,Finley Gale,Cyclist,Johto,Violet,electric,psychic,Elite,73,69,66,19,0,229
+T0055,Taylor Hart,Channeler,Sinnoh,Jubilife,ghost,normal,Novice,53,57,64,8,0,448
+T0056,Elliot Birch,Blaze Tamer,Alola,Seafolk,fire,normal,Veteran,63,74,77,9,0,526
+T0057,Rowan Storm,Ace Trainer,Hoenn,Mauville,fire,ice,Elite,82,73,69,18,1,555
+T0058,Lena Pryce,Ace Trainer,Johto,Azalea,dark,electric,Veteran,70,72,69,7,0,359
+T0059,Parker Ember,Steel Marshal,Johto,Olivine,steel,rock,Novice,57,54,48,1,0,142
+T0060,Reese Vale,Excavator,Kanto,Vermilion,ground,psychic,Champion,86,99,72,22,1,720
+T0061,Milo Avery,Technician,Johto,Goldenrod,electric,ice,Veteran,68,68,72,5,0,738
+T0062,Finley Wells,Herbalist,Kanto,Saffron,grass,ice,Novice,61,46,68,1,0,254
+T0063,Mina Keen,Machinist,Hoenn,Littleroot,steel,psychic,Veteran,68,47,72,13,0,376
+T0064,Kai Hale,Caretaker,Alola,Seafolk,fairy,flying,Elite,81,67,78,11,0,715
+T0065,Dakota Fox,Ace Trainer,Johto,Goldenrod,electric,dark,Novice,68,59,97,7,0,466
+T0066,Toby Birch,Night Operative,Johto,Goldenrod,dark,flying,Veteran,70,75,74,10,0,658
+T0067,Harper Dunn,Rogue,Unova,Nimbasa,poison,fighting,Novice,45,55,71,4,0,500
+T0068,Zane Rivers,Youngster,Hoenn,Sootopolis,normal,dark,Elite,68,85,60,13,1,18
+T0069,Avery Rivers,Ranger,Kanto,Saffron,grass,ground,Veteran,71,70,83,7,0,700
+T0070,Elliot Cole,Night Curator,Kanto,Pewter,ghost,rock,Novice,57,62,67,5,0,770
+T0071,Quinn Pryce,Ace Trainer,Sinnoh,Oreburgh,flying,dark,Novice,69,59,74,3,0,169
+T0072,Casey Lake,Ruin Maniac,Sinnoh,Canalave,rock,grass,Novice,53,56,72,1,0,112
+T0073,Reese Dunn,Machinist,Kanto,Pewter,steel,electric,Elite,74,86,81,15,0,530
+T0074,Theo Pryce,Bug Catcher,Kanto,Celadon,bug,ice,Veteran,69,67,70,5,0,589
+T0075,Ari Voss,Youngster,Kanto,Celadon,normal,grass,Veteran,72,72,87,6,0,760
+T0076,Sage Fox,Hiker,Kanto,Celadon,rock,poison,Champion,92,74,75,24,1,791
+T0077,Toby Morrow,Bug Catcher,Alola,Konikoni,bug,rock,Veteran,71,72,52,9,0,768
+T0078,Skyler Wilder,Herbalist,Hoenn,Littleroot,grass,psychic,Elite,89,71,63,15,1,772
+T0079,Nico Cole,Ace Trainer,Kanto,Saffron,fighting,grass,Veteran,83,81,35,6,0,149
+T0080,Sam Vega,Field Researcher,Alola,Iki,bug,psychic,Elite,83,74,70,10,1,795
+T0081,Cameron Hart,Excavator,Kalos,Anistar,ground,electric,Novice,56,56,85,8,0,448
+T0082,Hayden West,Channeler,Alola,Malie,ghost,dark,Veteran,81,65,41,11,1,65
+T0083,Reese West,Bug Catcher,Hoenn,Littleroot,bug,water,Elite,86,84,39,17,1,589
+T0084,Jordan Ember,Backpacker,Hoenn,Littleroot,ground,ghost,Elite,86,71,68,13,1,208
+T0085,Parker Rivers,Ace Trainer,Unova,Accumula,ice,psychic,Veteran,74,73,59,6,0,638
+T0086,Jamie Bloom,Fisher,Johto,Olivine,water,steel,Veteran,74,68,80,9,0,376
+T0087,Cameron Cross,Wave Tactician,Kanto,Celadon,water,flying,Novice,53,59,83,3,0,373
+T0088,Toby Quill,Excavator,Johto,Violet,rock,bug,Veteran,73,68,84,11,0,229
+T0089,Quinn Sterling,Channeler,Unova,Castelia,psychic,electric,Novice,65,62,48,2,0,376
+T0090,Parker Hale,Caretaker,Sinnoh,Hearthome,fairy,electric,Novice,51,58,56,6,0,407
+T0091,Kai Vale,Forge Duelist,Alola,Malie,fire,steel,Novice,62,53,76,2,0,555
+T0092,Ari Brooks,Dojo Master,Alola,Konikoni,fighting,electric,Veteran,84,69,71,10,0,68
+T0093,Finley Pike,Fisher,Johto,Ecruteak,water,ground,Elite,78,79,50,16,0,160
+T0094,Emerson Wilder,Ace Trainer,Kanto,Celadon,steel,fairy,Veteran,62,62,85,5,0,493
+T0095,Emerson Blaze,Technician,Kanto,Celadon,electric,dragon,Elite,81,85,73,14,1,94
+T0096,Logan Ember,Collector,Unova,Driftveil,bug,ground,Novice,57,65,65,3,0,214
+T0097,Blake Keen,Ace Trainer,Hoenn,Sootopolis,bug,poison,Novice,64,59,70,2,0,214
+T0098,Toby Hale,Backpacker,Kalos,Shalour,normal,fire,Veteran,60,75,72,11,0,717
+T0099,Emerson Bloom,Ace Trainer,Unova,Castelia,fighting,dragon,Veteran,69,70,72,8,0,445
+T0100,Luca Ashford,Engineer,Unova,Castelia,steel,fire,Elite,95,78,86,15,1,700
+T0101,Jamie Hart,Ranger,Kanto,Celadon,ground,fighting,Veteran,78,67,43,7,0,567
+T0102,Rowan Bloom,Gadgeteer,Kanto,Saffron,electric,fighting,Veteran,71,89,70,6,0,260
+T0103,Rowan Thorne,Toxic Specialist,Kanto,Pewter,poison,flying,Elite,84,67,94,12,0,94
+T0104,Toby Bloom,Ranger,Johto,Olivine,ground,steel,Veteran,65,66,65,10,0,450
+T0105,Parker Hart,Chemist,Hoenn,Slateport,poison,steel,Elite,84,82,67,16,1,395
+T0106,Iris Storm,Backpacker,Sinnoh,Snowpoint,normal,ghost,Veteran,89,58,95,6,0,463
+T0107,Rowan Ashford,Fisher,Alola,Iki,water,fire,Veteran,75,70,66,11,0,65
+T0108,Casey Voss,Ranger,Kalos,Shalour,grass,ghost,Elite,91,72,58,9,1,792
+T0109,Kai Hart,Backpacker,Johto,Olivine,normal,poison,Elite,81,71,57,14,1,586
+T0110,Skyler Voss,Black Belt,Unova,Mistralton,fighting,rock,Veteran,72,58,53,6,0,652
+T0111,Kai Wells,Mind Reader,Kalos,Couriway,psychic,flying,Elite,66,78,69,11,0,103
+T0112,Sawyer Morrow,Stone Warden,Hoenn,Sootopolis,rock,ghost,Elite,88,68,70,8,0,699
+T0113,Casey Lane,Black Belt,Kanto,Celadon,fighting,flying,Elite,84,56,38,15,1,647
+T0114,Hayden Morrow,Rogue,Kanto,Pewter,poison,dark,Veteran,73,71,69,8,0,115
+T0115,Theo Birch,Dragon Tamer,Sinnoh,Snowpoint,dragon,bug,Novice,50,46,44,1,0,691
+T0116,Jules Drake,Ace Trainer,Alola,Malie,fire,poison,Veteran,66,44,62,9,0,792
+T0117,Jordan West,Steel Marshal,Kanto,Celadon,steel,normal,Elite,76,88,64,15,1,289
+T0118,Micah Ember,Ace Trainer,Alola,Heahea,dragon,ice,Elite,82,65,58,18,0,655
+T0119,Morgan Voss,Ruin Maniac,Johto,Violet,rock,psychic,Elite,91,68,82,14,1,476
+T0120,Reese Gale,Hex Maniac,Hoenn,Mauville,ghost,grass,Veteran,64,60,90,5,0,474
+T0121,Parker Thorne,Ruin Maniac,Kanto,Vermilion,rock,fairy,Veteran,67,72,86,9,0,149
+T0122,Logan Vale,Herbalist,Hoenn,Rustboro,grass,ice,Novice,60,44,46,1,0,169
+T0123,Iris Vale,Ace Trainer,Johto,Azalea,fairy,poison,Novice,64,54,74,9,0,716
+T0124,Sage Vale,Skier,Unova,Driftveil,ice,bug,Veteran,67,57,55,8,0,65
+T0125,Dakota Cole,Engineer,Kalos,Shalour,steel,dark,Veteran,61,75,74,7,0,713
+T0126,Avery Cross,Toxic Specialist,Alola,Seafolk,poison,water,Champion,94,81,66,18,1,382
+T0127,Toby Thorne,Hex Maniac,Johto,Ecruteak,ghost,flying,Novice,48,55,47,4,0,593
+T0128,Sam Vale,Performer,Johto,Goldenrod,fairy,ice,Elite,94,74,71,17,1,671
+T0129,Finley Ashford,Punk,Johto,Violet,dark,grass,Novice,55,47,82,2,0,319
+T0130,Elliot Pryce,Hiker,Hoenn,Rustboro,rock,ice,Champion,94,93,61,16,1,719
+T0131,Cameron Hale,Martial Artist,Alola,Heahea,fighting,steel,Elite,96,83,57,13,1,289
+T0132,Jamie Gale,Excavator,Hoenn,Rustboro,rock,dragon,Veteran,74,73,86,7,0,334
+T0133,Finley Mason,Ace Trainer,Johto,Goldenrod,fairy,rock,Champion,92,95,98,22,1,785
+T0134,Lena Keen,Ace Trainer,Kanto,Vermilion,fighting,psychic,Veteran,72,49,87,3,0,354
+T0135,Jules Hale,Ace Trainer,Kalos,Shalour,electric,steel,Novice,63,65,68,3,0,248
+T0136,Ari Cross,Pilot,Sinnoh,Jubilife,flying,ground,Veteran,81,74,67,9,1,468
+T0137,Toby Fox,Swimmer,Hoenn,Rustboro,water,ghost,Veteran,76,50,71,3,0,87
+T0138,Blake Fox,Psychic,Johto,Goldenrod,psychic,fire,Veteran,58,72,67,11,0,779
+T0139,Finley West,Falconer,Hoenn,Rustboro,flying,dark,Elite,84,81,52,14,1,384
+T0140,Riley Blaze,Falconer,Sinnoh,Jubilife,flying,normal,Novice,56,51,86,1,0,178
+T0141,Dakota Frost,Ace Trainer,Hoenn,Slateport,normal,flying,Novice,61,65,58,4,0,428
+T0142,Parker Blaze,Performer,Kalos,Couriway,fairy,bug,Elite,82,72,90,15,0,384
+T0143,Elliot Avery,Glacier Keeper,Unova,Castelia,ice,dragon,Veteran,69,60,68,12,0,644
+T0144,Hayden Quill,Backpacker,Unova,Mistralton,normal,flying,Veteran,70,72,61,14,0,474
+T0145,Riley Avery,Chemist,Johto,Azalea,poison,psychic,Veteran,76,72,59,7,0,94
+T0146,Toby Cole,Technician,Hoenn,Slateport,electric,fighting,Novice,62,57,71,6,0,798
+T0147,Blake Hart,Ace Trainer,Sinnoh,Oreburgh,bug,steel,Elite,91,87,65,8,1,127
+T0148,Morgan Ember,Skier,Johto,Azalea,ice,fire,Veteran,76,71,58,8,0,65
+T0149,Nico Avery,Technician,Kanto,Saffron,electric,flying,Veteran,63,71,74,11,0,523
+T0150,Skyler Pryce,Night Curator,Hoenn,Rustboro,ghost,electric,Veteran,78,63,84,8,1,468
+T0151,Dakota Pryce,Fisher,Johto,Ecruteak,water,bug,Elite,84,79,45,11,1,381
+T0152,Theo Vega,Backpacker,Alola,Iki,ground,rock,Champion,86,81,55,18,1,691
+T0153,Emerson Brooks,Gardener,Alola,Iki,grass,water,Champion,92,93,89,20,1,310
+T0154,Blake Dunn,Youngster,Alola,Heahea,normal,electric,Novice,52,45,98,6,0,475
+T0155,Kai Quill,Falconer,Johto,Violet,flying,psychic,Veteran,72,71,54,6,0,373
+T0156,Zane Frost,Ace Trainer,Sinnoh,Jubilife,bug,ground,Novice,47,66,89,1,0,670
+T0157,Emerson Stone,Martial Artist,Johto,Violet,fighting,poison,Elite,78,78,86,11,1,257
+T0158,Lena Morrow,Snow Scout,Alola,Iki,ice,psychic,Novice,54,52,68,1,0,746
+T0159,Mina Stone,Stone Warden,Hoenn,Littleroot,rock,steel,Veteran,75,69,98,8,0,260
+T0160,Avery Dunn,Ace Trainer,Kalos,Lumiose,normal,ghost,Veteran,56,78,73,7,0,681
+T0161,Logan Dunn,Martial Artist,Unova,Driftveil,fighting,normal,Veteran,79,67,73,2,0,475
+T0162,Micah Ashford,Ace Trainer,Johto,Azalea,flying,rock,Veteran,67,61,87,6,0,468
+T0163,Riley Morrow,Ace Trainer,Johto,Ecruteak,poison,ice,Elite,73,67,47,11,0,169
+T0164,Lena Brooks,Falconer,Kanto,Vermilion,flying,bug,Elite,95,76,44,13,1,581
+T0165,Riley West,Ranger,Johto,Goldenrod,grass,fighting,Veteran,86,70,48,4,0,407
+T0166,Nora Keen,Dragon Tamer,Sinnoh,Snowpoint,dragon,bug,Champion,96,85,76,21,1,384
+T0167,Milo Stone,Rogue,Johto,Ecruteak,poison,dark,Novice,74,47,66,5,0,197
+T0168,Zane Fox,Toxic Specialist,Johto,Goldenrod,poison,rock,Champion,92,99,75,22,1,748
+T0169,Sawyer Cross,Ace Trainer,Sinnoh,Hearthome,fire,flying,Veteran,70,57,51,9,0,475
+T0170,Ari Sable,Machinist,Kalos,Anistar,steel,rock,Champion,90,88,94,18,1,792
+T0171,Morgan Vale,Performer,Kanto,Saffron,fairy,rock,Veteran,69,69,80,11,0,145
+T0172,Rowan Field,Dragon Tamer,Kalos,Shalour,dragon,water,Veteran,63,69,60,8,0,334
+T0173,Dakota Ashford,Excavator,Kanto,Vermilion,ground,fairy,Elite,81,77,78,14,0,472
+T0174,Nora Sterling,Ruin Maniac,Kalos,Shalour,rock,water,Novice,53,56,92,6,0,658
+T0175,Lena Lake,Belle,Hoenn,Mauville,fairy,dark,Novice,57,59,68,1,0,362
+T0176,Mina Hart,Technician,Unova,Mistralton,electric,fighting,Champion,85,91,62,18,1,445
+T0177,Reese Ashford,Sky Captain,Kalos,Anistar,dragon,fire,Veteran,66,60,64,9,0,65
+T0178,Sam Brooks,Forge Duelist,Kanto,Vermilion,fire,ground,Veteran,76,63,35,6,1,746
+T0179,Luca Drake,Wave Tactician,Johto,Violet,water,ground,Elite,92,75,56,14,1,450
+T0180,Jordan Drake,Hex Maniac,Unova,Accumula,ghost,bug,Veteran,60,75,54,8,0,478

@@ -1,0 +1,390 @@
+{
+  "title": "Lesson 9 - Calculations (Instructor)",
+  "data_csv": "shared/raw_data/battle_participant.csv",
+  "output_twbx": "instructor/workbooks/09_calculations_instructor.twbx",
+  "datasource_caption": "battle_participant",
+  "columns": [
+    {
+      "name": "battle_participant_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "battle_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "trainer_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "team_side",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "pokemonid",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "slot_number",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "is_winner",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "fainted_flag",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "venue_type_match_flag",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "trainer_type_match_flag",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "venue_resistance_multiplier",
+      "datatype": "real",
+      "role": "measure"
+    },
+    {
+      "name": "base_power",
+      "datatype": "real",
+      "role": "measure"
+    },
+    {
+      "name": "adjusted_power",
+      "datatype": "real",
+      "role": "measure"
+    },
+    {
+      "name": "is_mvp_flag",
+      "datatype": "integer",
+      "role": "dimension"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "C01 Arithmetic - Power Lift",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "[adjusted_power] - [base_power]"
+    },
+    {
+      "caption": "C02 Arithmetic - Power Ratio",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "[adjusted_power] / [base_power]"
+    },
+    {
+      "caption": "C03 Arithmetic - Power per Slot",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "[adjusted_power] / [slot_number]"
+    },
+    {
+      "caption": "C04 Logical - IIF Win Label",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([is_winner]=1, \"Won\", \"Lost\")"
+    },
+    {
+      "caption": "C05 Logical - IF/ELSEIF Power Class",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IF [adjusted_power] >= 600 THEN \"Dominant\"\nELSEIF [adjusted_power] >= 500 THEN \"Strong\"\nELSEIF [adjusted_power] >= 400 THEN \"Balanced\"\nELSE \"Underdog\"\nEND"
+    },
+    {
+      "caption": "C06 Logical - CASE Slot Role",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "CASE [slot_number]\nWHEN 1 THEN \"Lead\"\nWHEN 2 THEN \"Middle\"\nWHEN 3 THEN \"Anchor\"\nELSE \"Reserve\"\nEND"
+    },
+    {
+      "caption": "C07 Logical - Compound Boolean",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([is_winner]=1 AND [is_mvp_flag]=1, \"MVP Win\", \"Other\")"
+    },
+    {
+      "caption": "C08 String - Trainer Prefix",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "LEFT([trainer_id], 4)"
+    },
+    {
+      "caption": "C09 String - ID Length",
+      "datatype": "integer",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "LEN([battle_id])"
+    },
+    {
+      "caption": "C10 String - ID Upper",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "UPPER([team_side])"
+    },
+    {
+      "caption": "C11 Type Convert - Slot as String",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "STR([slot_number])"
+    },
+    {
+      "caption": "C12 Aggregate - Win Rate Manual",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "SUM([is_winner]) / COUNT([battle_id])"
+    },
+    {
+      "caption": "C13 Aggregate - COUNTD Trainers",
+      "datatype": "integer",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "COUNTD([trainer_id])"
+    },
+    {
+      "caption": "C14 Aggregate - COUNTD Pokemon",
+      "datatype": "integer",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "COUNTD([pokemonid])"
+    },
+    {
+      "caption": "C15 Conditional Agg - MVP Power Sum",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "SUM(IIF([is_mvp_flag]=1, [adjusted_power], 0))"
+    },
+    {
+      "caption": "C16 Conditional Agg - Wins Only",
+      "datatype": "integer",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "SUM(IIF([is_winner]=1, 1, 0))"
+    },
+    {
+      "caption": "C17 Null-Safe ZN Power Lift",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "ZN([adjusted_power]) - ZN([base_power])"
+    },
+    {
+      "caption": "C18 Sign Function - Lift Direction",
+      "datatype": "integer",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "SIGN([adjusted_power] - [base_power])"
+    },
+    {
+      "caption": "C19 ABS Function - Lift Magnitude",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "ABS([adjusted_power] - [base_power])"
+    },
+    {
+      "caption": "C20 ROUND - Power 2-decimal",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "ROUND([adjusted_power], 2)"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "01 Power Lift by Side (C01)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "C01 Arithmetic - Power Lift",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "team_side",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "02 Power Class Mix (C05)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_participant_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "C05 Logical - IF/ELSEIF Power Class",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "03 Slot Roles (C06)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_participant_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "C06 Logical - CASE Slot Role",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "team_side",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "04 MVP Wins (C07)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_participant_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "C07 Logical - Compound Boolean",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "05 Trainer Prefix Distribution (C08)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_participant_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "C08 String - Trainer Prefix",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "06 Win Rate Manual (C12)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "C12 Aggregate - Win Rate Manual",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "team_side",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "07 Unique Counts (C13/C14)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "C13 Aggregate - COUNTD Trainers",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "team_side",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "08 MVP Power Total (C15)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "C15 Conditional Agg - MVP Power Sum",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "team_side",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "09 Lift Direction (C18)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_participant_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "C18 Sign Function - Lift Direction",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "10 Power Class x Side",
+      "mark": "Square",
+      "rows": [
+        {
+          "field": "C05 Logical - IF/ELSEIF Power Class",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "team_side",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "battle_participant_id",
+        "agg": "Count"
+      }
+    }
+  ]
+}

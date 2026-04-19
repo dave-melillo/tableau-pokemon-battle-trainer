@@ -1,0 +1,221 @@
+{
+  "title": "Lesson 9 - Calculations (Student Answer Key)",
+  "data_csv": "shared/raw_data/battle_participant.csv",
+  "output_twbx": "student/workbooks/09_calculations_student.twbx",
+  "datasource_caption": "battle_participant",
+  "columns": [
+    {
+      "name": "battle_participant_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "battle_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "trainer_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "team_side",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "pokemonid",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "slot_number",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "is_winner",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "is_mvp_flag",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "venue_type_match_flag",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "base_power",
+      "datatype": "real",
+      "role": "measure"
+    },
+    {
+      "name": "adjusted_power",
+      "datatype": "real",
+      "role": "measure"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "1. Power Lift",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "[adjusted_power] - [base_power]"
+    },
+    {
+      "caption": "2. Win Label (IIF)",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([is_winner]=1, \"Won\", \"Lost\")"
+    },
+    {
+      "caption": "3. Power Class (IF/ELSEIF)",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IF [adjusted_power] >= 600 THEN \"Dominant\"\nELSEIF [adjusted_power] >= 500 THEN \"Strong\"\nELSEIF [adjusted_power] >= 400 THEN \"Balanced\"\nELSE \"Underdog\"\nEND"
+    },
+    {
+      "caption": "4. Slot Role (CASE)",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "CASE [slot_number]\nWHEN 1 THEN \"Lead\"\nWHEN 2 THEN \"Middle\"\nWHEN 3 THEN \"Anchor\"\nELSE \"Reserve\"\nEND"
+    },
+    {
+      "caption": "5. MVP Win (Compound Boolean)",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([is_winner]=1 AND [is_mvp_flag]=1, \"MVP Win\", \"Other\")"
+    },
+    {
+      "caption": "6. Trainer Prefix (LEFT)",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "LEFT([trainer_id], 4)"
+    },
+    {
+      "caption": "7. Manual Win Rate",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "SUM([is_winner]) / COUNT([battle_id])"
+    },
+    {
+      "caption": "8. Unique Trainers (COUNTD)",
+      "datatype": "integer",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "COUNTD([trainer_id])"
+    },
+    {
+      "caption": "9. MVP Power Sum (Conditional Agg)",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "SUM(IIF([is_mvp_flag]=1, [adjusted_power], 0))"
+    },
+    {
+      "caption": "10. Lift Direction (SIGN)",
+      "datatype": "integer",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "SIGN([adjusted_power] - [base_power])"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "A - Power Lift by Side (uses #1)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "1. Power Lift",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "team_side",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "B - Power Class Mix (uses #3)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_participant_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "3. Power Class (IF/ELSEIF)",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "C - Slot Roles (uses #4)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_participant_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "4. Slot Role (CASE)",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "team_side",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "D - Manual Win Rate (uses #7)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "7. Manual Win Rate",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "team_side",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "E - Lift Direction (uses #10)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_participant_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "10. Lift Direction (SIGN)",
+          "agg": "None"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "title": "Lesson 7 - Warmup (Student Answer Key)",
+  "data_csv": "shared/raw_data/trainer.csv",
+  "output_twbx": "student/workbooks/07_warmup_student.twbx",
+  "datasource_caption": "trainer",
+  "columns": [
+    {
+      "name": "trainer_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "trainer_name",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "trainer_class",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "home_region",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "preferred_type",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "experience_tier",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "strategy_rating",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "adaptability_rating",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "aggression_rating",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "years_experience",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "is_gym_leader",
+      "datatype": "integer",
+      "role": "dimension"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "Gym Leader Label",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([is_gym_leader]=1, \"Gym Leader\", \"Regular\")"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "A - Years of Experience Distribution",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "trainer_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "years_experience",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "B - Avg Strategy by Class",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "strategy_rating",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "trainer_class",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "C - Aggression - Leader vs Regular",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "aggression_rating",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "Gym Leader Label",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "D - Region x Preferred Type",
+      "mark": "Square",
+      "rows": [
+        {
+          "field": "home_region",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "preferred_type",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "trainer_id",
+        "agg": "Count"
+      }
+    },
+    {
+      "name": "E - Top Trainers by Strategy",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "strategy_rating",
+          "agg": "Max"
+        }
+      ],
+      "cols": [
+        {
+          "field": "trainer_name",
+          "agg": "None"
+        }
+      ]
+    }
+  ]
+}

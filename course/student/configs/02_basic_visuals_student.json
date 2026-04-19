@@ -1,0 +1,155 @@
+{
+  "title": "Lesson 2 - Basic Visuals (Student Answer Key)",
+  "data_csv": "shared/raw_data/pokemon.csv",
+  "output_twbx": "student/workbooks/02_basic_visuals_student.twbx",
+  "datasource_caption": "pokemon",
+  "columns": [
+    {
+      "name": "name",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "type1",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "type2",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "generation",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "is_legendary",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "hp",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "attack",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "defense",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "speed",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "base_total",
+      "datatype": "integer",
+      "role": "measure"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "Legendary Label",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([is_legendary]=1, \"Legendary\", \"Standard\")"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "A - Top by Speed",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "speed",
+          "agg": "Max"
+        }
+      ],
+      "cols": [
+        {
+          "field": "name",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "B - Avg Defense by Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "defense",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "type1",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "C - HP vs Attack Scatter",
+      "mark": "Circle",
+      "rows": [
+        {
+          "field": "hp",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "attack",
+          "agg": "Avg"
+        }
+      ],
+      "color": {
+        "field": "Legendary Label",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "D - Heat Map Type x Gen",
+      "mark": "Square",
+      "rows": [
+        {
+          "field": "type1",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "generation",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "base_total",
+        "agg": "Avg"
+      }
+    },
+    {
+      "name": "E - Treemap by Type",
+      "mark": "Square",
+      "rows": [],
+      "cols": [],
+      "size": {
+        "field": "name",
+        "agg": "Count"
+      },
+      "color": {
+        "field": "type1",
+        "agg": "None"
+      }
+    }
+  ]
+}

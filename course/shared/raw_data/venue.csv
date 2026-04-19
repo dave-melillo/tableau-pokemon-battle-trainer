@@ -1,0 +1,55 @@
+venue_id,venue_name,region,lat,lon,venue_type,environment_style,head_trainer_id,home_weather,terrain_edge_pct,capacity,indoor_outdoor,prestige_tier
+V001,Snowpoint Pollinator Park,Sinnoh,42.3291,139.3914,bug,Pollinator Park,T0147,Breezy,0.082,1039,Indoor,Regional
+V002,Mauville Pollinator Park,Hoenn,33.8703,132.0304,bug,Pollinator Park,T0083,Breezy,0.177,2339,Indoor,Local
+V003,Heahea Insectarium,Alola,20.8295,-155.9022,bug,Insectarium,T0080,Breezy,0.142,1164,Outdoor,Local
+V004,Saffron Noir Hall,Kanto,34.7204,139.2905,dark,Noir Hall,T0036,Moonless,0.127,1561,Outdoor,Local
+V005,Accumula Umbra Ring,Unova,39.8457,-72.7108,dark,Umbra Ring,T0013,Moonless,0.145,1319,Indoor,Major
+V006,Konikoni Shadow Court,Alola,23.1433,-157.4798,dark,Shadow Court,T0004,Moonless,0.133,995,Indoor,Local
+V007,Jubilife Wyvern Keep,Sinnoh,43.5849,143.3906,dragon,Wyvern Keep,T0166,High Winds,0.168,2019,Outdoor,Regional
+V008,Vermilion Skyspire,Kanto,36.2271,141.7812,dragon,Skyspire,T0052,High Winds,0.098,717,Indoor,Local
+V009,Azalea Scale Citadel,Johto,34.223,137.2435,dragon,Scale Citadel,T0006,High Winds,0.124,2289,Outdoor,Major
+V010,Accumula Thunder Dome,Unova,42.3028,-74.6484,electric,Thunder Dome,T0176,Thunderstorm,0.15,1196,Indoor,Local
+V011,Celadon Neon Circuit,Kanto,34.8099,139.4063,electric,Neon Circuit,T0095,Thunderstorm,0.128,354,Outdoor,Local
+V012,Olivine Power Grid,Johto,34.5415,136.2723,electric,Power Grid,T0030,Thunderstorm,0.113,1164,Indoor,Major
+V013,Olivine Charm Pavilion,Johto,33.7758,133.4874,fairy,Charm Pavilion,T0133,Glittering,0.154,2489,Indoor,Regional
+V014,Azalea Moonlight Theater,Johto,32.9756,135.5839,fairy,Moonlight Theater,T0128,Glittering,0.143,2280,Indoor,Regional
+V015,Mauville Pixie Court,Hoenn,34.4348,131.3868,fairy,Pixie Court,T0032,Glittering,0.151,382,Outdoor,Local
+V016,Seafolk Combat Hall,Alola,22.2112,-158.656,fighting,Combat Hall,T0131,Clear,0.119,417,Indoor,Local
+V017,Saffron Victory Gym,Kanto,34.5088,139.1224,fighting,Victory Gym,T0113,Clear,0.132,1426,Indoor,Local
+V018,Goldenrod Dojo Arena,Johto,34.1208,136.0528,fighting,Dojo Arena,T0157,Clear,0.135,2104,Outdoor,Regional
+V019,Sootopolis Volcano Arena,Hoenn,32.506,128.5256,fire,Volcano Arena,T0057,Harsh Sun,0.175,2325,Outdoor,Local
+V020,Littleroot Inferno Pit,Hoenn,34.179,129.0246,fire,Inferno Pit,T0016,Harsh Sun,0.164,2034,Outdoor,Major
+V021,Pewter Cinder Stadium,Kanto,35.1706,141.2893,fire,Cinder Stadium,T0178,Harsh Sun,0.137,505,Indoor,Local
+V022,Vermilion Aviary Heights,Kanto,35.5726,139.0329,flying,Aviary Heights,T0164,Windy,0.142,2224,Indoor,Local
+V023,Slateport Soaring Ring,Hoenn,34.0569,129.2933,flying,Soaring Ring,T0139,Windy,0.102,1863,Indoor,Regional
+V024,Jubilife Soaring Ring,Sinnoh,41.3521,139.6662,flying,Soaring Ring,T0136,Windy,0.13,2166,Indoor,Local
+V025,Konikoni Phantom Manor,Alola,21.7671,-158.5687,ghost,Phantom Manor,T0082,Fog,0.118,1687,Indoor,Regional
+V026,Slateport Wraith Estate,Hoenn,34.4275,132.7588,ghost,Wraith Estate,T0150,Fog,0.114,1521,Indoor,Local
+V027,Azalea Haunted House,Johto,34.473,135.4214,ghost,Haunted House,T0043,Fog,0.145,873,Outdoor,Major
+V028,Malie Botanical Garden,Alola,21.1568,-157.5354,grass,Botanical Garden,T0153,Sunny,0.17,2027,Indoor,Local
+V029,Shalour Canopy Court,Kalos,50.0384,2.6857,grass,Canopy Court,T0108,Sunny,0.119,713,Outdoor,Regional
+V030,Mauville Botanical Garden,Hoenn,35.147,130.3024,grass,Botanical Garden,T0078,Sunny,0.099,1696,Indoor,Local
+V031,Saffron Cavern Pit,Kanto,35.3564,140.6891,ground,Cavern Pit,T0060,Dusty,0.125,618,Outdoor,Regional
+V032,Heahea Badlands Track,Alola,20.6561,-157.9124,ground,Badlands Track,T0152,Dusty,0.161,1817,Outdoor,Regional
+V033,Slateport Dustbowl Arena,Hoenn,33.9011,128.2785,ground,Dustbowl Arena,T0084,Dusty,0.143,2494,Indoor,Regional
+V034,Seafolk Crystal Cavern,Alola,20.7254,-158.035,ice,Crystal Cavern,T0026,Hail,0.11,2190,Indoor,Regional
+V035,Castelia Polar Dome,Unova,41.0009,-74.5259,ice,Polar Dome,T0005,Hail,0.102,529,Outdoor,Regional
+V036,Konikoni Glacier Hall,Alola,21.4591,-157.525,ice,Glacier Hall,T0050,Hail,0.136,1063,Indoor,Regional
+V037,Cerulean Town Arena,Kanto,35.8223,138.7871,normal,Town Arena,T0040,Clear,0.107,1342,Outdoor,Major
+V038,Azalea Central Stadium,Johto,34.9735,135.2621,normal,Central Stadium,T0109,Clear,0.148,1953,Outdoor,Local
+V039,Mauville Civic Hall,Hoenn,32.5204,129.1495,normal,Civic Hall,T0068,Clear,0.108,1450,Outdoor,Local
+V040,Konikoni Fume Works,Alola,19.9694,-157.6045,poison,Fume Works,T0126,Smog,0.165,301,Outdoor,Major
+V041,Ecruteak Venom Vault,Johto,34.4542,137.9789,poison,Venom Vault,T0168,Smog,0.112,1300,Outdoor,Local
+V042,Sootopolis Toxin Lab,Hoenn,34.174,130.5817,poison,Toxin Lab,T0105,Smog,0.175,1533,Indoor,Local
+V043,Azalea Mind Palace,Johto,35.002,134.0068,psychic,Mind Palace,T0041,Odd Aura,0.134,2298,Outdoor,Local
+V044,Malie Telepathic Sanctum,Alola,21.6826,-155.7895,psychic,Telepathic Sanctum,T0048,Odd Aura,0.123,2264,Outdoor,Regional
+V045,Littleroot Mind Palace,Hoenn,33.1863,130.7589,psychic,Mind Palace,T0009,Odd Aura,0.122,752,Outdoor,Regional
+V046,Slateport Cliffside Arena,Hoenn,33.0781,130.2852,rock,Cliffside Arena,T0130,Sandstorm,0.15,1108,Outdoor,Local
+V047,Vermilion Canyon Ring,Kanto,35.1266,138.3554,rock,Canyon Ring,T0076,Sandstorm,0.164,769,Outdoor,Local
+V048,Ecruteak Canyon Ring,Johto,34.9251,136.37,rock,Canyon Ring,T0119,Sandstorm,0.085,2500,Outdoor,Major
+V049,Couriway Foundry Hall,Kalos,48.4818,1.8216,steel,Foundry Hall,T0170,Overcast,0.093,1057,Outdoor,Regional
+V050,Mistralton Gear Arena,Unova,42.2893,-74.9548,steel,Gear Arena,T0100,Overcast,0.127,426,Indoor,Local
+V051,Cerulean Iron Bastion,Kanto,34.8981,139.2618,steel,Iron Bastion,T0117,Overcast,0.13,1070,Outdoor,Local
+V052,Ecruteak Cascade Basin,Johto,32.4042,132.8532,water,Cascade Basin,T0179,Rain,0.174,1459,Indoor,Local
+V053,Coumarine Aquarium,Kalos,49.0926,1.8493,water,Aquarium,T0053,Rain,0.085,543,Outdoor,Major
+V054,Olivine Aquarium,Johto,35.3437,137.2396,water,Aquarium,T0151,Rain,0.153,1303,Outdoor,Local

@@ -1,0 +1,234 @@
+{
+  "title": "Lesson 10 - Mapping (Instructor)",
+  "data_csv": "shared/raw_data/venue.csv",
+  "output_twbx": "instructor/workbooks/10_mapping_instructor.twbx",
+  "datasource_caption": "venue",
+  "columns": [
+    {
+      "name": "venue_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "venue_name",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "region",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "lat",
+      "datatype": "real",
+      "role": "measure",
+      "semantic_role": "[Latitude].[Latitude]"
+    },
+    {
+      "name": "lon",
+      "datatype": "real",
+      "role": "measure",
+      "semantic_role": "[Longitude].[Longitude]"
+    },
+    {
+      "name": "venue_type",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "environment_style",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "head_trainer_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "home_weather",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "terrain_edge_pct",
+      "datatype": "real",
+      "role": "measure"
+    },
+    {
+      "name": "capacity",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "indoor_outdoor",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "prestige_tier",
+      "datatype": "string",
+      "role": "dimension"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "Capacity Bucket",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IF [capacity] >= 1500 THEN \"Mega (1500+)\"\nELSEIF [capacity] >= 1000 THEN \"Large (1000-1499)\"\nELSEIF [capacity] >= 500 THEN \"Mid (500-999)\"\nELSE \"Small (<500)\"\nEND"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "01 Symbol Map - Venues",
+      "mark": "Automatic",
+      "rows": [
+        {
+          "field": "lat",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "lon",
+          "agg": "Avg"
+        }
+      ]
+    },
+    {
+      "name": "02 Symbol Map - Colored by Type",
+      "mark": "Automatic",
+      "rows": [
+        {
+          "field": "lat",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "lon",
+          "agg": "Avg"
+        }
+      ],
+      "color": {
+        "field": "venue_type",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "03 Symbol Map - Sized by Capacity",
+      "mark": "Automatic",
+      "rows": [
+        {
+          "field": "lat",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "lon",
+          "agg": "Avg"
+        }
+      ],
+      "color": {
+        "field": "Capacity Bucket",
+        "agg": "None"
+      },
+      "size": {
+        "field": "capacity",
+        "agg": "Avg"
+      }
+    },
+    {
+      "name": "04 Map - Region Highlight",
+      "mark": "Automatic",
+      "rows": [
+        {
+          "field": "lat",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "lon",
+          "agg": "Avg"
+        }
+      ],
+      "color": {
+        "field": "region",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "05 Indoor vs Outdoor",
+      "mark": "Automatic",
+      "rows": [
+        {
+          "field": "lat",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "lon",
+          "agg": "Avg"
+        }
+      ],
+      "color": {
+        "field": "indoor_outdoor",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "06 Bar Companion - Venues by Region",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "venue_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "region",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "07 Bar Companion - Capacity by Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "capacity",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_type",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "08 Terrain Edge by Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "terrain_edge_pct",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_type",
+          "agg": "None"
+        }
+      ]
+    }
+  ]
+}

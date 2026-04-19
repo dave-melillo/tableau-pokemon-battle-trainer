@@ -1,0 +1,289 @@
+{
+  "title": "Lesson 3 - Advanced Visuals (Instructor)",
+  "data_csv": "shared/raw_data/battles.csv",
+  "output_twbx": "instructor/workbooks/03_advanced_visuals_instructor.twbx",
+  "datasource_caption": "battles",
+  "columns": [
+    {
+      "name": "battle_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "battle_date",
+      "datatype": "date",
+      "role": "dimension"
+    },
+    {
+      "name": "venue_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "battle_format",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "trainer_home_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "trainer_away_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "trainer_winner_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "home_team_size",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "away_team_size",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "winning_side",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "battle_turns",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "winning_margin",
+      "datatype": "real",
+      "role": "measure"
+    },
+    {
+      "name": "title_match_flag",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "weather_condition",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "attendance",
+      "datatype": "integer",
+      "role": "measure"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "Title Match Label",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([title_match_flag]=1, \"Title Match\", \"Regular\")"
+    },
+    {
+      "caption": "Margin Tier",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IF [winning_margin] >= 100 THEN \"Blowout\"\nELSEIF [winning_margin] >= 50 THEN \"Decisive\"\nELSEIF [winning_margin] >= 20 THEN \"Solid\"\nELSE \"Close\"\nEND"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "01 Time Series - Battles by Month",
+      "mark": "Line",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battle_date",
+          "agg": "Month"
+        }
+      ]
+    },
+    {
+      "name": "02 Discrete Time - Battles by Quarter",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battle_date",
+          "agg": "Quarter"
+        }
+      ]
+    },
+    {
+      "name": "03 Heat Map - Format x Weather",
+      "mark": "Square",
+      "rows": [
+        {
+          "field": "battle_format",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "weather_condition",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "battle_id",
+        "agg": "Count"
+      }
+    },
+    {
+      "name": "04 Box Plot Data - Margin by Format",
+      "mark": "Circle",
+      "rows": [
+        {
+          "field": "winning_margin",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battle_format",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "winning_side",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "05 Stacked Bar - Wins by Side and Format",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battle_format",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "winning_side",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "06 Scatter - Turns vs Margin",
+      "mark": "Circle",
+      "rows": [
+        {
+          "field": "winning_margin",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battle_turns",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "Margin Tier",
+        "agg": "None"
+      },
+      "size": {
+        "field": "attendance",
+        "agg": "Avg"
+      }
+    },
+    {
+      "name": "07 Trend - Avg Attendance Over Time",
+      "mark": "Line",
+      "rows": [
+        {
+          "field": "attendance",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battle_date",
+          "agg": "Month"
+        }
+      ],
+      "color": {
+        "field": "battle_format",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "08 Bullet-style - Title vs Regular",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "attendance",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "Title Match Label",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "09 Slope - Margin by Weather",
+      "mark": "Line",
+      "rows": [
+        {
+          "field": "winning_margin",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "weather_condition",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "10 Highlight Table - Format x Margin Tier",
+      "mark": "Square",
+      "rows": [
+        {
+          "field": "Margin Tier",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battle_format",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "battle_id",
+        "agg": "Count"
+      }
+    }
+  ]
+}

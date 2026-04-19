@@ -1,0 +1,148 @@
+{
+  "title": "Lesson 4 - Joins Intro (Student Answer Key, real Tableau join)",
+  "output_twbx": "student/workbooks/04_joins_intro_student.twbx",
+  "datasource_caption": "battles + venue",
+  "tables": [
+    {
+      "alias": "battles",
+      "csv_path": "shared/raw_data/battles.csv",
+      "columns": [
+        {
+          "name": "battle_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "battle_date",
+          "datatype": "date",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "battle_format",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "winning_side",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "weather_condition",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "attendance",
+          "datatype": "integer",
+          "role": "measure"
+        }
+      ]
+    },
+    {
+      "alias": "venue",
+      "csv_path": "shared/raw_data/venue.csv",
+      "columns": [
+        {
+          "name": "venue_name",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "region",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_type",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "indoor_outdoor",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "capacity",
+          "datatype": "integer",
+          "role": "measure"
+        },
+        {
+          "name": "prestige_tier",
+          "datatype": "string",
+          "role": "dimension"
+        }
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "left_table": "battles",
+      "left_col": "venue_id",
+      "right_table": "venue",
+      "right_col": "venue_id",
+      "join_type": "inner"
+    }
+  ],
+  "calculated_fields": [],
+  "worksheets": [
+    {
+      "name": "A - Avg Attendance by Region",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "attendance",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_region",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "B - Battle Count by Venue Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_venue_type",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "venue_indoor_outdoor",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "BONUS - Top Venue by Total Attendance",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "attendance",
+          "agg": "Sum"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_venue_name",
+          "agg": "None"
+        }
+      ]
+    }
+  ]
+}

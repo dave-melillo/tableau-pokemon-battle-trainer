@@ -1,0 +1,72 @@
+{
+  "title": "Lesson 1 - Intro to Tableau (Student Answer Key)",
+  "data_csv": "shared/raw_data/pokemon.csv",
+  "output_twbx": "student/workbooks/01_intro_student.twbx",
+  "datasource_caption": "pokemon",
+  "columns": [
+    {
+      "name": "name",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "type1",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "generation",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "is_legendary",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "hp",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "attack",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "defense",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "speed",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "base_total",
+      "datatype": "integer",
+      "role": "measure"
+    }
+  ],
+  "calculated_fields": [],
+  "worksheets": [
+    {
+      "name": "ANSWER - Top by HP",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "hp",
+          "agg": "Max"
+        }
+      ],
+      "cols": [
+        {
+          "field": "name",
+          "agg": "None"
+        }
+      ]
+    }
+  ]
+}

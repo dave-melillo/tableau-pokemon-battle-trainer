@@ -1,0 +1,262 @@
+{
+  "title": "Lesson 8 - Groups and Sets (Instructor)",
+  "data_csv": "shared/raw_data/pokemon.csv",
+  "output_twbx": "instructor/workbooks/08_groups_sets_instructor.twbx",
+  "datasource_caption": "pokemon",
+  "columns": [
+    {
+      "name": "name",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "type1",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "type2",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "generation",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "is_legendary",
+      "datatype": "integer",
+      "role": "dimension"
+    },
+    {
+      "name": "hp",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "attack",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "defense",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "speed",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "base_total",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "weight_kg",
+      "datatype": "real",
+      "role": "measure"
+    },
+    {
+      "name": "height_m",
+      "datatype": "real",
+      "role": "measure"
+    },
+    {
+      "name": "capture_rate",
+      "datatype": "integer",
+      "role": "measure"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "Type Family (Group)",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IF [type1]=\"fire\" OR [type1]=\"water\" OR [type1]=\"grass\" THEN \"Starter Element\"\nELSEIF [type1]=\"dragon\" OR [type1]=\"psychic\" OR [type1]=\"ghost\" OR [type1]=\"dark\" THEN \"Mystical\"\nELSEIF [type1]=\"fighting\" OR [type1]=\"rock\" OR [type1]=\"steel\" OR [type1]=\"ground\" THEN \"Physical\"\nELSEIF [type1]=\"electric\" OR [type1]=\"ice\" OR [type1]=\"fairy\" OR [type1]=\"flying\" THEN \"Air & Energy\"\nELSE \"Common\"\nEND"
+    },
+    {
+      "caption": "Legendary Set",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([is_legendary]=1, \"In - Legendary\", \"Out - Standard\")"
+    },
+    {
+      "caption": "Top Tier Set (S-Tier)",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([base_total] >= 600, \"In - S-Tier\", \"Out\")"
+    },
+    {
+      "caption": "Speed Bucket (Group)",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IF [speed] >= 110 THEN \"Lightning\"\nELSEIF [speed] >= 80 THEN \"Fast\"\nELSEIF [speed] >= 50 THEN \"Average\"\nELSE \"Slow\"\nEND"
+    },
+    {
+      "caption": "Power Tier",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IF [base_total] >= 600 THEN \"S-Tier\"\nELSEIF [base_total] >= 500 THEN \"A-Tier\"\nELSEIF [base_total] >= 400 THEN \"B-Tier\"\nELSE \"C-Tier\"\nEND"
+    },
+    {
+      "caption": "Heavy Hitter Set",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IIF([attack] >= 100 AND [defense] >= 100, \"In - Heavy Hitter\", \"Out\")"
+    },
+    {
+      "caption": "Generation Group",
+      "datatype": "string",
+      "role": "dimension",
+      "type": "nominal",
+      "formula": "IF [generation] <= 2 THEN \"Classic (Gen 1-2)\"\nELSEIF [generation] <= 4 THEN \"Modern (Gen 3-4)\"\nELSE \"Recent (Gen 5+)\"\nEND"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "01 Type Family Counts",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "name",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "Type Family (Group)",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "02 Avg Total by Type Family",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "base_total",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "Type Family (Group)",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "Legendary Set",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "03 Speed Bucket Distribution",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "name",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "Speed Bucket (Group)",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "Power Tier",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "04 S-Tier Pokemon Set",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "name",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "Top Tier Set (S-Tier)",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "type1",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "05 Heavy Hitters by Type",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "name",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "type1",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "Heavy Hitter Set",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "06 Generation Group x Power Tier",
+      "mark": "Square",
+      "rows": [
+        {
+          "field": "Generation Group",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "Power Tier",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "name",
+        "agg": "Count"
+      }
+    },
+    {
+      "name": "07 Legendaries by Type Family",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "name",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "Type Family (Group)",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "Legendary Set",
+        "agg": "None"
+      }
+    }
+  ]
+}

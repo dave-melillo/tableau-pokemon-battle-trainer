@@ -1,0 +1,395 @@
+{
+  "title": "Lesson 12 - LOD Calculations (Instructor)",
+  "output_twbx": "instructor/workbooks/12_lod_instructor.twbx",
+  "datasource_caption": "joined",
+  "tables": [
+    {
+      "alias": "battle_participant",
+      "csv_path": "shared/raw_data/battle_participant.csv",
+      "columns": [
+        {
+          "name": "battle_participant_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "battle_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "trainer_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "team_side",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "pokemonid",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "slot_number",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "is_winner",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "is_mvp_flag",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "adjusted_power",
+          "datatype": "real",
+          "role": "measure"
+        }
+      ]
+    },
+    {
+      "alias": "pokemon",
+      "csv_path": "shared/raw_data/pokemon.csv",
+      "columns": [
+        {
+          "name": "pokedex_number",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "name",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "type1",
+          "datatype": "string",
+          "role": "dimension"
+        }
+      ]
+    },
+    {
+      "alias": "trainer",
+      "csv_path": "shared/raw_data/trainer.csv",
+      "columns": [
+        {
+          "name": "trainer_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "experience_tier",
+          "datatype": "string",
+          "role": "dimension"
+        }
+      ]
+    },
+    {
+      "alias": "battles",
+      "csv_path": "shared/raw_data/battles.csv",
+      "columns": [
+        {
+          "name": "battle_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_id",
+          "datatype": "string",
+          "role": "dimension"
+        }
+      ]
+    },
+    {
+      "alias": "venue",
+      "csv_path": "shared/raw_data/venue.csv",
+      "columns": [
+        {
+          "name": "venue_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_type",
+          "datatype": "string",
+          "role": "dimension"
+        }
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "left_table": "battle_participant",
+      "left_col": "pokemonid",
+      "right_table": "pokemon",
+      "right_col": "pokedex_number",
+      "join_type": "left"
+    },
+    {
+      "left_table": "battle_participant",
+      "left_col": "trainer_id",
+      "right_table": "trainer",
+      "right_col": "trainer_id",
+      "join_type": "left"
+    },
+    {
+      "left_table": "battle_participant",
+      "left_col": "battle_id",
+      "right_table": "battles",
+      "right_col": "battle_id",
+      "join_type": "left"
+    },
+    {
+      "left_table": "battles",
+      "left_col": "venue_id",
+      "right_table": "venue",
+      "right_col": "venue_id",
+      "join_type": "left"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "L01 FIXED - Overall Avg Power",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED : AVG([adjusted_power]) }"
+    },
+    {
+      "caption": "L02 FIXED Trainer - Avg Power",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [trainer_id] : AVG([adjusted_power]) }"
+    },
+    {
+      "caption": "L03 FIXED Trainer - Win Rate",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [trainer_id] : AVG([is_winner]) }"
+    },
+    {
+      "caption": "L04 FIXED Pokemon - Win Rate",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [pokemonid] : AVG([is_winner]) }"
+    },
+    {
+      "caption": "L05 FIXED Venue - Battles",
+      "datatype": "integer",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [battles_venue_id] : COUNTD([battle_id]) }"
+    },
+    {
+      "caption": "L06 FIXED Trainer+Type - Win Rate",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [trainer_id], [pokemon_type1] : AVG([is_winner]) }"
+    },
+    {
+      "caption": "L07 FIXED VType - Type Win Rate",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [venue_venue_type], [pokemon_type1] : AVG([is_winner]) }"
+    },
+    {
+      "caption": "L08 INCLUDE Battle - Avg Power",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ INCLUDE [battle_id] : AVG([adjusted_power]) }"
+    },
+    {
+      "caption": "L09 EXCLUDE Side - Avg Power",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ EXCLUDE [team_side] : AVG([adjusted_power]) }"
+    },
+    {
+      "caption": "L10 Comparison - Power vs Trainer Avg",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "[adjusted_power] - { FIXED [trainer_id] : AVG([adjusted_power]) }"
+    },
+    {
+      "caption": "L11 Comparison - Trainer vs Overall",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [trainer_id] : AVG([adjusted_power]) } - { FIXED : AVG([adjusted_power]) }"
+    },
+    {
+      "caption": "L12 Nested - Trainer Avg of Battle Avg",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [trainer_id] : AVG({ INCLUDE [battle_id] : AVG([adjusted_power]) }) }"
+    },
+    {
+      "caption": "L13 % of Total via FIXED",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "SUM([adjusted_power]) / { FIXED : SUM([adjusted_power]) }"
+    },
+    {
+      "caption": "L14 Trainer Battle Count (FIXED)",
+      "datatype": "integer",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [trainer_id] : COUNTD([battle_id]) }"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "01 Trainer Win Rate Distribution (L03)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "trainer_id",
+          "agg": "Countd"
+        }
+      ],
+      "cols": [
+        {
+          "field": "L03 FIXED Trainer - Win Rate",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "02 Trainer vs Overall (L11)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "L11 Comparison - Trainer vs Overall",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "trainer_experience_tier",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "03 Power vs Trainer Avg (L10)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "L10 Comparison - Power vs Trainer Avg",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "slot_number",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "team_side",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "04 Pokemon Win Rate (L04)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "L04 FIXED Pokemon - Win Rate",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "pokemon_type1",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "05 Type x Venue Win Rate (L07)",
+      "mark": "Square",
+      "rows": [
+        {
+          "field": "pokemon_type1",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_venue_type",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "L07 FIXED VType - Type Win Rate",
+        "agg": "Avg"
+      }
+    },
+    {
+      "name": "06 % of Total Power (L13)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "L13 % of Total via FIXED",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "team_side",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "07 Battles per Venue (L05)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "L05 FIXED Venue - Battles",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battles_venue_id",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "08 Battles per Trainer (L14)",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "L14 Trainer Battle Count (FIXED)",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "trainer_experience_tier",
+          "agg": "None"
+        }
+      ]
+    }
+  ]
+}

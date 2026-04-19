@@ -1,0 +1,140 @@
+{
+  "title": "Lesson 6 - Story (Instructor)",
+  "data_csv": "shared/raw_data/battles.csv",
+  "output_twbx": "instructor/workbooks/06_story_instructor.twbx",
+  "datasource_caption": "battles",
+  "columns": [
+    {
+      "name": "battle_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "battle_date",
+      "datatype": "date",
+      "role": "dimension"
+    },
+    {
+      "name": "venue_id",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "battle_format",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "winning_side",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "weather_condition",
+      "datatype": "string",
+      "role": "dimension"
+    },
+    {
+      "name": "attendance",
+      "datatype": "integer",
+      "role": "measure"
+    },
+    {
+      "name": "winning_margin",
+      "datatype": "real",
+      "role": "measure"
+    },
+    {
+      "name": "battle_turns",
+      "datatype": "integer",
+      "role": "measure"
+    }
+  ],
+  "calculated_fields": [],
+  "worksheets": [
+    {
+      "name": "Story Pt 1 - Activity Trend",
+      "mark": "Line",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battle_date",
+          "agg": "Month"
+        }
+      ]
+    },
+    {
+      "name": "Story Pt 2 - Format Popularity",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "battle_format",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "Story Pt 3 - Home Field Advantage",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "battle_id",
+          "agg": "Count"
+        }
+      ],
+      "cols": [
+        {
+          "field": "winning_side",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "Story Pt 4 - Attendance vs Margin",
+      "mark": "Circle",
+      "rows": [
+        {
+          "field": "attendance",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "winning_margin",
+          "agg": "Avg"
+        }
+      ],
+      "color": {
+        "field": "battle_format",
+        "agg": "None"
+      }
+    },
+    {
+      "name": "Story Pt 5 - Weather Effect",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "winning_margin",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "weather_condition",
+          "agg": "None"
+        }
+      ]
+    }
+  ]
+}

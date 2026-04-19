@@ -1,0 +1,240 @@
+{
+  "title": "Lesson 12 - LOD (Student Answer Key)",
+  "output_twbx": "student/workbooks/12_lod_student.twbx",
+  "datasource_caption": "joined",
+  "tables": [
+    {
+      "alias": "battle_participant",
+      "csv_path": "shared/raw_data/battle_participant.csv",
+      "columns": [
+        {
+          "name": "battle_participant_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "battle_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "trainer_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "team_side",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "pokemonid",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "is_winner",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "adjusted_power",
+          "datatype": "real",
+          "role": "measure"
+        }
+      ]
+    },
+    {
+      "alias": "pokemon",
+      "csv_path": "shared/raw_data/pokemon.csv",
+      "columns": [
+        {
+          "name": "pokedex_number",
+          "datatype": "integer",
+          "role": "dimension"
+        },
+        {
+          "name": "type1",
+          "datatype": "string",
+          "role": "dimension"
+        }
+      ]
+    },
+    {
+      "alias": "trainer",
+      "csv_path": "shared/raw_data/trainer.csv",
+      "columns": [
+        {
+          "name": "trainer_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "experience_tier",
+          "datatype": "string",
+          "role": "dimension"
+        }
+      ]
+    },
+    {
+      "alias": "battles",
+      "csv_path": "shared/raw_data/battles.csv",
+      "columns": [
+        {
+          "name": "battle_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_id",
+          "datatype": "string",
+          "role": "dimension"
+        }
+      ]
+    },
+    {
+      "alias": "venue",
+      "csv_path": "shared/raw_data/venue.csv",
+      "columns": [
+        {
+          "name": "venue_id",
+          "datatype": "string",
+          "role": "dimension"
+        },
+        {
+          "name": "venue_type",
+          "datatype": "string",
+          "role": "dimension"
+        }
+      ]
+    }
+  ],
+  "joins": [
+    {
+      "left_table": "battle_participant",
+      "left_col": "pokemonid",
+      "right_table": "pokemon",
+      "right_col": "pokedex_number",
+      "join_type": "left"
+    },
+    {
+      "left_table": "battle_participant",
+      "left_col": "trainer_id",
+      "right_table": "trainer",
+      "right_col": "trainer_id",
+      "join_type": "left"
+    },
+    {
+      "left_table": "battle_participant",
+      "left_col": "battle_id",
+      "right_table": "battles",
+      "right_col": "battle_id",
+      "join_type": "left"
+    },
+    {
+      "left_table": "battles",
+      "left_col": "venue_id",
+      "right_table": "venue",
+      "right_col": "venue_id",
+      "join_type": "left"
+    }
+  ],
+  "calculated_fields": [
+    {
+      "caption": "1. Trainer Avg Power (FIXED)",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [trainer_id] : AVG([adjusted_power]) }"
+    },
+    {
+      "caption": "2. Trainer Win Rate (FIXED)",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [trainer_id] : AVG([is_winner]) }"
+    },
+    {
+      "caption": "3. Pct of Total Power",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "SUM([adjusted_power]) / { FIXED : SUM([adjusted_power]) }"
+    },
+    {
+      "caption": "4. Power Deviation from Trainer Avg",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "[adjusted_power] - { FIXED [trainer_id] : AVG([adjusted_power]) }"
+    },
+    {
+      "caption": "5. Pokemon Win Rate (FIXED)",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [pokemonid] : AVG([is_winner]) }"
+    },
+    {
+      "caption": "6. Type x Venue Win Rate",
+      "datatype": "real",
+      "role": "measure",
+      "type": "quantitative",
+      "formula": "{ FIXED [pokemon_type1], [venue_venue_type] : AVG([is_winner]) }"
+    }
+  ],
+  "worksheets": [
+    {
+      "name": "A - Trainer Win Rate Distribution",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "trainer_id",
+          "agg": "Countd"
+        }
+      ],
+      "cols": [
+        {
+          "field": "2. Trainer Win Rate (FIXED)",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "B - Power Deviation by Side",
+      "mark": "Bar",
+      "rows": [
+        {
+          "field": "4. Power Deviation from Trainer Avg",
+          "agg": "Avg"
+        }
+      ],
+      "cols": [
+        {
+          "field": "team_side",
+          "agg": "None"
+        }
+      ]
+    },
+    {
+      "name": "C - Type x Venue Win Rate Heat",
+      "mark": "Square",
+      "rows": [
+        {
+          "field": "pokemon_type1",
+          "agg": "None"
+        }
+      ],
+      "cols": [
+        {
+          "field": "venue_venue_type",
+          "agg": "None"
+        }
+      ],
+      "color": {
+        "field": "6. Type x Venue Win Rate",
+        "agg": "Avg"
+      }
+    }
+  ]
+}
